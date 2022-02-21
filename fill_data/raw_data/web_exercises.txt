@@ -1,0 +1,537 @@
+#----------#
+1. Create a Python project to get CO2 emission data from the UK Carbon Intensity API.
+
+
+Solution
+
+from datetime import date
+
+import requests
+BASE_URL = "https://api.carbonintensity.org.uk/intensity"
+# Emission in the last half hour
+def fetch_last_half_hour() -> str:
+    last_half_hour = requests.get(BASE_URL).json()["data"][0]
+    return last_half_hour["intensity"]["actual"]
+# Emissions in a specific date range
+def fetch_from_to(start, end) -> list:
+    return requests.get(f"{BASE_URL}/{start}/{end}").json()["data"]
+
+
+if __name__ == "__main__":
+    for entry in fetch_from_to(start=date(2020, 10, 1), end=date(2020, 10, 3)):
+        print("From {from} to {to}: {intensity[actual]}".format(**entry)) 
+
+#----------#
+2. Create a Python project to get total Covid-19 cases, total deaths due to Covid-19, total Covid-19 patients recovered in the world.
+
+
+Solution
+
+from collections import namedtuple
+import requests
+from lxml import html
+
+covid_data = namedtuple("covid_data", "cases deaths recovered")
+def covid_stats(url: str = "https://www.worldometers.info/coronavirus/") -> covid_data:
+    xpath_str = '//div[@class = "maincounter-number"]/span/text()'
+    return covid_data(*html.fromstring(requests.get(url).content).xpath(xpath_str))
+fmt = """\nTotal COVID-19 cases in the world: {}
+\nTotal deaths due to COVID-19 in the world: {}
+\nTotal COVID-19 patients recovered in the world: {}"""
+print(fmt.format(*covid_stats())) 
+
+#----------#
+3. Create a Python project to convert the currency using the Amdoren Currency API.
+
+
+Solution
+
+import os
+import requests
+URL_BASE = "https://www.amdoren.com/api/currency.php"
+TESTING = os.getenv("CI", True)
+# Create the API key from https://www.amdoren.com/developer/
+API_KEY = '**************************’
+if not API_KEY and not TESTING:
+    raise KeyError("Please put your API key in an environment variable.")
+# Currency and their description
+list_of_currencies = """
+AED	United Arab Emirates Dirham
+AFN	Afghan Afghani
+ALL	Albanian Lek
+AMD	Armenian Dram
+ANG	Netherlands Antillean Guilder
+AOA	Angolan Kwanza
+ARS	Argentine Peso
+AUD	Australian Dollar
+AWG	Aruban Florin
+AZN	Azerbaijani Manat
+BAM	Bosnia & Herzegovina Convertible Mark
+BBD	Barbadian Dollar
+BDT	Bangladeshi Taka
+BGN	Bulgarian Lev
+BHD	Bahraini Dinar
+BIF	Burundian Franc
+BMD	Bermudian Dollar
+BND	Brunei Dollar
+BOB	Bolivian Boliviano
+BRL	Brazilian Real
+BSD	Bahamian Dollar
+BTN	Bhutanese Ngultrum
+BWP	Botswana Pula
+BYN	Belarus Ruble
+BZD	Belize Dollar
+CAD	Canadian Dollar
+CDF	Congolese Franc
+CHF	Swiss Franc
+CLP	Chilean Peso
+CNY	Chinese Yuan
+COP	Colombian Peso
+CRC	Costa Rican Colon
+CUC	Cuban Convertible Peso
+CVE	Cape Verdean Escudo
+CZK	Czech Republic Koruna
+DJF	Djiboutian Franc
+DKK	Danish Krone
+DOP	Dominican Peso
+DZD	Algerian Dinar
+EGP	Egyptian Pound
+ERN	Eritrean Nakfa
+ETB	Ethiopian Birr
+EUR	Euro
+FJD	Fiji Dollar
+GBP	British Pound Sterling
+GEL	Georgian Lari
+GHS	Ghanaian Cedi
+GIP	Gibraltar Pound
+GMD	Gambian Dalasi
+GNF	Guinea Franc
+GTQ	Guatemalan Quetzal
+GYD	Guyanaese Dollar
+HKD	Hong Kong Dollar
+HNL	Honduran Lempira
+HRK	Croatian Kuna
+HTG	Haiti Gourde
+HUF	Hungarian Forint
+IDR	Indonesian Rupiah
+ILS	Israeli Shekel
+INR	Indian Rupee
+IQD	Iraqi Dinar
+IRR	Iranian Rial
+ISK	Icelandic Krona
+JMD	Jamaican Dollar
+JOD	Jordanian Dinar
+JPY	Japanese Yen
+KES	Kenyan Shilling
+KGS	Kyrgystani Som
+KHR	Cambodian Riel
+KMF	Comorian Franc
+KPW	North Korean Won
+KRW	South Korean Won
+KWD	Kuwaiti Dinar
+KYD	Cayman Islands Dollar
+KZT	Kazakhstan Tenge
+LAK	Laotian Kip
+LBP	Lebanese Pound
+LKR	Sri Lankan Rupee
+LRD	Liberian Dollar
+LSL	Lesotho Loti
+LYD	Libyan Dinar
+MAD	Moroccan Dirham
+MDL	Moldovan Leu
+MGA	Malagasy Ariary
+MKD	Macedonian Denar
+MMK	Myanma Kyat
+MNT	Mongolian Tugrik
+MOP	Macau Pataca
+MRO	Mauritanian Ouguiya
+MUR	Mauritian Rupee
+MVR	Maldivian Rufiyaa
+MWK	Malawi Kwacha
+MXN	Mexican Peso
+MYR	Malaysian Ringgit
+MZN	Mozambican Metical
+NAD	Namibian Dollar
+NGN	Nigerian Naira
+NIO	Nicaragua Cordoba
+NOK	Norwegian Krone
+NPR	Nepalese Rupee
+NZD	New Zealand Dollar
+OMR	Omani Rial
+PAB	Panamanian Balboa
+PEN	Peruvian Nuevo Sol
+PGK	Papua New Guinean Kina
+PHP	Philippine Peso
+PKR	Pakistani Rupee
+PLN	Polish Zloty
+PYG	Paraguayan Guarani
+QAR	Qatari Riyal
+RON	Romanian Leu
+RSD	Serbian Dinar
+RUB	Russian Ruble
+RWF	Rwanda Franc
+SAR	Saudi Riyal
+SBD	Solomon Islands Dollar
+SCR	Seychellois Rupee
+SDG	Sudanese Pound
+SEK	Swedish Krona
+SGD	Singapore Dollar
+SHP	Saint Helena Pound
+SLL	Sierra Leonean Leone
+SOS	Somali Shilling
+SRD	Surinamese Dollar
+SSP	South Sudanese Pound
+STD	Sao Tome and Principe Dobra
+SYP	Syrian Pound
+SZL	Swazi Lilangeni
+THB	Thai Baht
+TJS	Tajikistan Somoni
+TMT	Turkmenistani Manat
+TND	Tunisian Dinar
+TOP	Tonga Paanga
+TRY	Turkish Lira
+TTD	Trinidad and Tobago Dollar
+TWD	New Taiwan Dollar
+TZS	Tanzanian Shilling
+UAH	Ukrainian Hryvnia
+UGX	Ugandan Shilling
+USD	United States Dollar
+UYU	Uruguayan Peso
+UZS	Uzbekistan Som
+VEF	Venezuelan Bolivar
+VND	Vietnamese Dong
+VUV	Vanuatu Vatu
+WST	Samoan Tala
+XAF	Central African CFA franc
+XCD	East Caribbean Dollar
+XOF	West African CFA franc
+XPF	CFP Franc
+YER	Yemeni Rial
+ZAR	South African Rand
+ZMW	Zambian Kwacha
+"""
+def convert_currency(
+    from_: str = "USD", to: str = "INR", amount: float = 1.0, api_key: str = API_KEY
+) -> str:
+    """https://www.amdoren.com/currency-api/"""
+    params = locals()
+    params["from"] = params.pop("from_")
+    res = requests.get(URL_BASE, params=params).json()
+    return str(res["amount"]) if res["error"] == 0 else res["error_message"]
+if __name__ == "__main__":
+    print(
+        convert_currency(
+            input("Enter from currency: ").strip(),
+            input("Enter to currency: ").strip(),
+            float(input("Enter the amount: ").strip()),
+        )
+    )
+
+#----------#
+4. Create a Python project to get the current stock price of specified companies.
+
+
+Solution
+
+import requests
+from bs4 import BeautifulSoup
+
+def stock_price(symbol: str = "AAPL") -> str:
+    url = f"https://in.finance.yahoo.com/quote/{symbol}?s={symbol}"
+    soup = BeautifulSoup(requests.get(url).text, "html.parser")
+    class_ = "My(6px) Pos(r) smartphone_Mt(6px)"
+    return soup.find("div", class_=class_).find("span").text
+
+if __name__ == "__main__":
+    for symbol in "AAPL AMZN IBM GOOG MSFT ORCL ABM A".split():
+        print(f"Current {symbol:<4} stock price is:  {stock_price(symbol):>8}")
+
+#----------#
+5. Create a Python project to get the citation from Google scholar using title and year of publication, and volume and pages of journal.
+
+
+Solution
+
+import requests
+from bs4 import BeautifulSoup
+
+def get_citation(base_url: str, params: dict) -> str:
+    """
+    Return the citation number.
+    """
+    soup = BeautifulSoup(requests.get(base_url, params=params).content, "html.parser")
+    div = soup.find("div", attrs={"class": "gs_ri"})
+    anchors = div.find("div", attrs={"class": "gs_fl"}).find_all("a")
+    return anchors[2].get_text()
+
+
+if __name__ == "__main__":
+    params = {
+        "title": (
+            "Precisely geometry controlled microsupercapacitors for ultrahigh areal "
+            "capacitance, volumetric capacitance, and energy density"
+        ),
+        "journal": "Chem. Mater.",
+        "volume": 30,
+        "pages": "3979-3990",
+        "year": 2018,
+        "hl": "en",
+    }
+    print(get_citation("http://scholar.google.com/scholar_lookup", params=params))
+
+#----------#
+6. Create a Python project to display the weather forecast of a given city.
+
+
+Solution
+
+import requests
+APPID = "**************************"  #  dict:
+    """https://openweathermap.org/api"""
+    return requests.get(URL_BASE + "weather", params=locals()).json()
+def weather_forecast(q: str = "", appid: str = APPID) -> dict:
+    """https://openweathermap.org/forecast5"""
+    return requests.get(URL_BASE + "forecast", params=locals()).json()
+def weather_onecall(lat: float = 55.68, lon: float = 12.57, appid: str = APPID) -> dict:
+    """https://openweathermap.org/api/one-call-api"""
+    return requests.get(URL_BASE + "onecall", params=locals()).json()
+if __name__ == "__main__":
+    from pprint import pprint
+    while True:
+        location = input("Input a location: ").strip()
+        if location:
+            pprint(current_weather(location))
+        else:
+            break
+
+#----------#
+7. Create a Python project to display the daily Horoscope for a specified sign.
+
+
+Solution
+
+import requests
+from bs4 import BeautifulSoup
+def horoscope(zodiac_sign: int, day: str) -> str:
+    url = (
+        "https://www.horoscope.com/us/horoscopes/general/"
+        f"horoscope-general-daily-{day}.aspx?sign={zodiac_sign}"
+    )
+    soup = BeautifulSoup(requests.get(url).content, "html.parser")
+    return soup.find("div", class_="main-horoscope").p.text
+if __name__ == "__main__":
+    print("Daily Horoscope. \n")
+    print(
+        "Input your Zodiac sign number:\n",
+        "1. Aries\n",
+        "2. Taurus\n",
+        "3. Gemini\n",
+        "4. Cancer\n",
+        "5. Leo\n",
+        "6. Virgo\n",
+        "7. Libra\n",
+        "8. Scorpio\n",
+        "9. Sagittarius\n",
+        "10. Capricorn\n",
+        "11. Aquarius\n",
+        "12. Pisces\n",
+    )
+    zodiac_sign = int(input("Input a number from said list: ").strip())
+    print("Choose some day:\n", "yesterday\n", "today\n", "tomorrow\n")
+    day = input("Input the day from said list: ")
+    horoscope_text = horoscope(zodiac_sign, day)
+    print(horoscope_text)
+
+#----------#
+8. Create a Python project to get the site emails from a specified URL.
+
+
+Solution
+"""Get the site emails from URL."""
+
+import re
+from html.parser import HTMLParser
+from urllib import parse
+
+import requests
+class Parser(HTMLParser):
+    def __init__(self, domain: str):
+        HTMLParser.__init__(self)
+        self.data = []
+        self.domain = domain
+
+    def handle_starttag(self, tag: str, attrs: str) -> None:
+        """
+        This function parse html to take takes url from tags
+        """
+        # Only parse the 'anchor' tag.
+        if tag == "a":
+            # Check the list of defined attributes.
+            for name, value in attrs:
+                # If href is defined, and not empty nor # print it.
+                if name == "href" and value != "#" and value != "":
+                    # If not already in data.
+                    if value not in self.data:
+                        url = parse.urljoin(self.domain, value)
+                        self.data.append(url)
+
+
+# Get main domain name (example.com)
+def get_domain_name(url: str) -> str:
+    """
+    This function get the main domain name
+    >>> get_domain_name("https://a.b.c.d/e/f?g=h,i=j#k")
+    'c.d'
+    >>> get_domain_name("Not a URL!")
+    ''
+    """
+    return ".".join(get_sub_domain_name(url).split(".")[-2:])
+# Get sub domain name (sub.example.com)
+def get_sub_domain_name(url: str) -> str:
+    """
+    >>> get_sub_domain_name("https://a.b.c.d/e/f?g=h,i=j#k")
+    'a.b.c.d'
+    >>> get_sub_domain_name("Not a URL!")
+    ''
+    """
+    return parse.urlparse(url).netloc
+def emails_from_url(url: str = "https://github.com") -> list:
+    """
+    This function takes url and return all valid urls
+    """
+    # Get the base domain from the url
+    domain = get_domain_name(url)
+
+    # Initialize the parser
+    parser = Parser(domain)
+
+    try:
+        # Open URL
+        r = requests.get(url)
+
+        # pass the raw HTML to the parser to get links
+        parser.feed(r.text)
+
+        # Get links and loop through
+        valid_emails = set()
+        for link in parser.data:
+            # open URL.
+            # read = requests.get(link)
+            try:
+                read = requests.get(link)
+                # Get the valid email.
+                emails = re.findall("[a-zA-Z0-9][email protected]" + domain, read.text)
+                # If not in list then append it.
+                for email in emails:
+                    valid_emails.add(email)
+            except ValueError:
+                pass
+    except ValueError:
+        exit(-1)
+
+    # Finally return a sorted list of email addresses with no duplicates.
+    return sorted(valid_emails)
+if __name__ == "__main__":
+    emails = emails_from_url("https://github.com")
+    print(f"{len(emails)} emails found:")
+    print("\n".join(sorted(emails)))
+
+#----------#
+9. Create a Python project to fetch BBC news. Fetch a list of articles in JSON format from newsapi.org.
+
+
+Solution
+
+import requests
+_NEWS_API = "https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey="
+def fetch_bbc_news(bbc_news_api_key: str) -> None:
+    # fetching a list of articles in json format
+    bbc_news_page = requests.get(_NEWS_API + bbc_news_api_key).json()
+    # each article in the list is a dict
+    for i, article in enumerate(bbc_news_page["articles"], 1):
+        print(f"{i}.) {article['title']}")
+
+if __name__ == "__main__":
+    fetch_bbc_news(bbc_news_api_key="718b1a4a84614ca29a61e2e17ab9a554")
+
+#----------#
+10. Create a Python project to fetch job title and location from indeed website.
+
+
+Solution
+"""Scraping jobs given job title and location from indeed website
+
+"""
+from __future__ import annotations
+from typing import Generator
+import requests
+from bs4 import BeautifulSoup
+url = "https://www.indeed.co.in/jobs?q=mobile+app+development&l="
+def fetch_jobs(location: str = "mumbai") -> Generator[tuple[str, str], None, None]:
+    soup = BeautifulSoup(requests.get(url + location).content, "html.parser")
+    # This attribute finds out all the specifics listed in a job
+    for job in soup.find_all("div", attrs={"data-tn-component": "organicJob"}):
+        job_title = job.find("a", attrs={"data-tn-element": "jobTitle"}).text.strip()
+        company_name = job.find("span", {"class": "company"}).text.strip()
+        yield job_title, company_name
+if __name__ == "__main__":
+    print("Job title and location from indeed website:\n")
+    for i, job in enumerate(fetch_jobs("Bangalore"), 1):
+        print(f"Job {i:>2} is {job[0]} at {job[1]}")
+
+#----------#
+11. Create a Python project to display and write the title and rating of Imdb top 250 movies in a csv file.
+
+
+Solution
+
+from __future__ import annotations
+import csv
+import requests
+from bs4 import BeautifulSoup
+
+def get_imdb_top_250_movies(url: str = "") -> dict[str, float]:
+    url = url or "https://www.imdb.com/chart/top/?ref_=nv_mv_250"
+    soup = BeautifulSoup(requests.get(url).text, "html.parser")
+    titles = soup.find_all("td", attrs="titleColumn")
+    ratings = soup.find_all("td", class_="ratingColumn imdbRating")
+    return {
+        title.a.text: float(rating.strong.text)
+        for title, rating in zip(titles, ratings)
+    }
+def write_movies(filename: str = "IMDb_Top_250_Movies.csv") -> None:
+    movies = get_imdb_top_250_movies()
+    print("Movie Title and Rating:\n")
+    with open(filename, "w", newline="") as out_file:
+        writer = csv.writer(out_file)
+        writer.writerow(["Movie title", "IMDb rating"])
+        for title, rating in movies.items():
+            print(title," ",rating)
+            writer.writerow([title, rating])
+if __name__ == "__main__":
+    write_movies()
+
+#----------#
+12. Create a Python project to get the title, genre, rating and the url of the specific movie from IMDb movie database.
+
+
+Solution
+
+import requests
+from bs4 import BeautifulSoup
+def imdb_top(imdb_top_n):
+    base_url = (
+        f"https://www.imdb.com/search/title?title_type="
+        f"feature&sort=num_votes,desc&count={imdb_top_n}"
+    )
+    source = BeautifulSoup(requests.get(base_url).content, "html.parser")
+    for m in source.findAll("div", class_="lister-item mode-advanced"):
+        print("\n" + m.h3.a.text)  # movie's name
+        print(m.find("span", attrs={"class": "genre"}).text)  # genre
+        print(m.strong.text)  # movie's rating
+        print(f"https://www.imdb.com{m.a.get('href')}")  # movie's page link
+        print("*" * 40)
+if __name__ == "__main__":
+    imdb_top(input("How many movies would you like to see? "))
+
+#----------#

@@ -1,3 +1,14 @@
+# VSCode preference
+.vscode
+
+# Test and temporary code 
+test/
+
+# Test repositories
+repos/
+
+# Parsed data
+fill_data/prepared_data/
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

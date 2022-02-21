@@ -1,0 +1,3624 @@
+#----------#
+1. Write a Python program find a list of integers with exactly two occurrences of nineteen and at least three occurrences of five. 
+Input:
+[19, 19, 15, 5, 3, 5, 5, 2]
+Output:
+True
+Input:
+[19, 15, 15, 5, 3, 3, 5, 2]
+Output:
+False
+Input:
+[19, 19, 5, 5, 5, 5, 5]
+Output:
+True
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    return nums.count(19) == 2 and nums.count(5) >= 3
+nums = [19,19,15,5,3,5,5,2]
+print("Original list:")
+print(nums)
+print("Check two occurrences of nineteen and at least three occurrences of five in the said list:")
+print(test(nums))
+nums = [19,15,15,5,3,3,5,2]
+print("\nOriginal list:")
+print(nums)
+print("Check two occurrences of nineteen and at least three occurrences of five in the said list:")
+print(test(nums))
+nums = [19,19,5,5,5,5,5]
+print("\nOriginal list:")
+print(nums)
+print("Check two occurrences of nineteen and at least three occurrences of five in the said list:")
+print(test(nums))
+
+#----------#
+2. Write a Python program that accept a list of integers and check the length and the fifth element. Return true if the length of the list is 8 and fifth element occurs thrice in the said list. 
+Input:
+[19, 19, 15, 5, 5, 5, 1, 2]
+Output:
+True
+Input:
+[19, 15, 5, 7, 5, 5, 2]
+Output:
+False
+Input:
+[11, 12, 14, 13, 14, 13, 15, 14]
+Output:
+True
+Input:
+[19, 15, 11, 7, 5, 6, 2]
+Output:
+False
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    return len(nums) == 8 and nums.count(nums[4]) == 3
+
+nums = [19,19,15,5,5,5,1,2]
+print("Original list:")
+print(nums)
+print("Check whether the length of the said list is 8 and fifth element occurs thrice in the said list. :")
+print(test(nums))
+nums = [19,15,5,7,5,5,2]
+print("\nOriginal list:")
+print(nums)
+print("Check whether the length of the said list is 8 and fifth element occurs thrice in the said list. :")
+print(test(nums))
+nums = [11,12,14,13,14,13,15,14]
+print("\nOriginal list:")
+print(nums)
+print("Check whether the length of the said list is 8 and fifth element occurs thrice in the said list. :")
+print(test(nums))
+nums = [19,15,11,7,5,6,2]
+print("\nOriginal list:")
+print(nums)
+print("Check whether the length of the said list is 8 and fifth element occurs thrice in the said list. :")
+print(test(nums))
+
+#----------#
+3. Write a Python program that accept an integer test whether an integer greater than 4^4 and which is 4 mod 34.
+Input:
+922
+Output:
+True
+Input:
+914
+Output:
+False
+Input:
+854
+Output:
+True
+Input:
+854
+Output:
+True
+Click me to see the sample solution
+
+Solution
+
+
+def test(n):
+    return n % 34 == 4 and n > 4 ** 4
+
+n = 922
+print("Original Integer:")
+print(n)
+print("Check whether the said integer greater than 4^4 and which is 7 mod 134 :")
+print(test(n))
+n = 914
+print("\nOriginal Integer:")
+print(n)
+print("Check whether the said integer greater than 4^4 and which is 7 mod 134 :")
+print(test(n))
+n = 854
+print("\nOriginal Integer:")
+print(n)
+print("Check whether the said integer greater than 4^4 and which is 7 mod 134 :")
+print(test(n))
+print("\nOriginal Integer:")
+print(n)
+print("Check whether the said integer greater than 4^4 and which is 7 mod 134 :")
+print(test(n))
+
+#----------#
+4. We are making n stone piles! The first pile has n stones. If n is even, then all piles have an even number of stones. If n is odd, all piles have an odd number of stones. Each pile must more stones than the previous pile but as few as possible. Write a Python program to find the number of stones in each pile. 
+Input: 2
+Output:
+[2, 4]
+Input: 10
+Output:
+[10, 12, 14, 16, 18, 20, 22, 24, 26, 28]
+Input: 3
+Output:
+[3, 5, 7]
+Input: 17
+Output:
+[17, 19, 21, 23, 25, 27, 29, 31, 33, 35, 37, 39, 41, 43, 45, 47, 49]
+Click me to see the sample solution
+
+Solution
+
+
+def test(n):    
+    return [n + 2 * i for i in range(n)]   
+n = 2
+print("Number of piles:",n)
+print("Number of stones in each pile:")
+print(test(n)) 
+n = 10
+print("\nNumber of piles:",n)
+print("Number of stones in each pile:")
+print(test(n)) 
+n = 3
+print("\nNumber of piles:",n)
+print("Number of stones in each pile:")
+print(test(n)) 
+n = 17
+print("\nNumber of piles:",n)
+print("Number of stones in each pile:")
+print(test(n))
+
+#----------#
+5. Write a Python program to check the nth-1 string is a proper substring of nth string in a given list of strings. 
+Input:
+['a', 'abb', 'sfs', 'oo', 'de', 'sfde']
+Output:
+True
+Input:
+['a', 'abb', 'sfs', 'oo', 'ee', 'sfde']
+Output:
+False
+Input:
+['a', 'abb', 'sad', 'ooaaesdfe', 'sfsdfde', 'sfsd', 'sfsdf', 'qwrew']
+Output:
+False
+Input:
+['a', 'abb', 'sad', 'ooaaesdfe', 'sfsdfde', 'sfsd', 'sfsdf', 'qwsfsdfrew']
+Output:
+True
+Click me to see the sample solution
+
+Solution
+
+
+def test(str1):
+    return str1[len(str1)-2] in str1[len(str1)-1] and str1[len(str1)-2] != str1[len(str1)-1]
+
+str11 = ["a","abb","sfs", "oo", "de", "sfde"]
+print("Original list:")
+print(str11)
+print("Check the nth-1 string is a proper substring of nth string of the said list of strings:")
+print(test(str11))
+str11 = ["a","abb","sfs", "oo", "ee", "sfde"]
+print("\nOriginal list:")
+print(str11)
+print("Check the nth-1 string is a proper substring of nth string of the said list of strings:")
+print(test(str11))
+str11 = ["a","abb","sad", "ooaa" "esdfe", "sfsdfde", "sfsd", "sfsdf", "qwrew"]
+print("\nOriginal list:")
+print(str11)
+print("Check the nth-1 string is a proper substring of nth string of the said list of strings:")
+print(test(str11)) 
+str11 = ["a","abb","sad", "ooaa" "esdfe", "sfsdfde", "sfsd", "sfsdf", "qwsfsdfrew"]
+print("\nOriginal list:")
+print(str11)
+print("Check the nth-1 string is a proper substring of nth string of the said list of strings:")
+print(test(str11))
+
+#----------#
+6. Write a Python program to test a list of one hundred integers between 0 and 999, which all differ by ten from one another. Return true or false. 
+Input:
+[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230, 240, 250, 260, 270, 280, 290, 300, 310, 320, 330, 340, 350, 360, 370, 380, 390, 400, 410, 420, 430, 440, 450, 460, 470, 480, 490, 500, 510, 520, 530, 540, 550, 560, 570, 580, 590, 600, 610, 620, 630, 640, 650, 660, 670, 680, 690, 700, 710, 720, 730, 740, 750, 760, 770, 780, 790, 800, 810, 820, 830, 840, 850, 860, 870, 880, 890, 900, 910, 920, 930, 940, 950, 960, 970, 980, 990]
+Output:
+True
+Input:
+[0, 20, 40, 60, 80, 100, 120, 140, 160, 180, 200, 220, 240, 260, 280, 300, 320, 340, 360, 380, 400, 420, 440, 460, 480, 500, 520, 540, 560, 580, 600, 620, 640, 660, 680, 700, 720, 740, 760, 780, 800, 820, 840, 860, 880, 900, 920, 940, 960, 980]
+Output:
+False
+Click me to see the sample solution
+
+Solution
+
+
+def test(li):
+    return all(i in range(1000) and abs(i - j) >= 10 for i in li for j in li if i != j) and len(set(li)) == 100
+nums = list(range(0, 1000, 10))
+print("Original list:")
+print(nums)
+print("Check whether the said list contains one hundred integers between 0 and 999 which all differ by ten from one another:")
+print(test(nums))
+nums = list(range(0, 1000, 20))
+print("Original list:")
+print(nums)
+print("Check whether the said list contains one hundred integers between 0 and 999 which all differ by ten from one another:")
+print(test(nums))
+
+#----------#
+7. Write a Python program to check a given list of integers where the sum of the first i integers is i. 
+Input:
+[0, 1, 2, 3, 4, 5]
+Output:
+False
+Input:
+[1, 1, 1, 1, 1, 1]
+Output:
+True
+Input:
+[2, 2, 2, 2, 2]
+Output:
+False
+Click me to see the sample solution
+
+Solution
+
+ 
+def test(nums):
+    return all([sum(nums[:i]) == i for i in range(len(nums))])
+nums = [0,1,2,3,4,5]
+print("Original list:")
+print(nums)
+print("Check the said list, where the sum of the first i integers is i:")
+print(test(nums))
+nums = [1,1,1,1,1,1]
+print("\nOriginal list:")
+print(nums)
+print("Check the said list, where the sum of the first i integers is i:")
+print(test(nums))
+nums = [2,2,2,2,2]
+print("\nOriginal list:")
+print(nums)
+print("Check the said list, where the sum of the first i integers is i:")
+print(test(nums))
+
+#----------#
+8. Write a Python program to split a string of words separated by commas and spaces into two lists, words and separators. 
+Input: W3resource Python, Exercises.
+Output:
+[['W3resource', 'Python', 'Exercises.'], [' ', ', ']]
+Input: The dance, held in the school gym, ended at midnight.
+Output:
+[['The', 'dance', 'held', 'in', 'the', 'school', 'gym', 'ended', 'at', 'midnight.'], [' ', ', ', ' ', ' ', ' ', ' ', ', ', ' ', ' ']]
+Input: The colors in my studyroom are blue, green, and yellow.
+Output:
+[['The', 'colors', 'in', 'my', 'studyroom', 'are', 'blue', 'green', 'and', 'yellow.'], [' ', ' ', ' ', ' ', ' ', ' ', ', ', ', ', ' ']]
+Click me to see the sample solution
+
+Solution
+
+
+def test(string):
+    import re
+    merged = re.split(r"([ ,]+)", string)
+    return [merged[::2], merged[1::2]]
+s = "W3resource Python, Exercises."
+print("Original string:",s)
+print("Split the said string into 2 lists: words and separators:")
+print(test(s))
+s = "The dance, held in the school gym, ended at midnight."
+print("\nOriginal string:",s)
+print("Split the said string into 2 lists: words and separators:")
+print(test(s))
+s = "The colors in my studyroom are blue, green, and yellow."
+print("\nOriginal string:",s)
+print("Split the said string into 2 lists: words and separators:")
+print(test(s))
+
+#----------#
+9. Write a Python program to find list integers containing exactly four distinct values, such that no integer repeats twice consecutively among the first twenty entries. 
+Input:
+[1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
+Output:
+True
+Input:
+[1, 2, 3, 3, 1, 2, 3, 3, 1, 2, 3, 3, 1, 2, 3, 3]
+Output:
+False
+Input:
+[1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]
+Output:
+False
+Click me to see the sample solution
+
+Solution
+
+def test(nums):
+    return all([nums[i] != nums[i + 1] for i in range(len(nums)-1)]) and len(set(nums)) == 4
+nums = [1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]
+print("Original list:")
+print(nums)
+print("Check said list of integers containing exactly four distinct values, such that no integer repeats  twice consecutively:")
+print(test(nums))
+nums = [1, 2, 3, 3, 1, 2, 3, 3, 1, 2, 3, 3, 1, 2, 3, 3]
+print("\nOriginal list:")
+print(nums)
+print("Check said list of integers containing exactly four distinct values, such that no integer repeats  twice consecutively:")
+print(test(nums))
+nums = [1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3]
+print("\nOriginal list:")
+print(nums)
+print("Check said list of integers containing exactly four distinct values, such that no integer repeats  twice consecutively:")
+print(test(nums))
+
+#----------#
+10. Given a string consisting of whitespace and groups of matched parentheses, write a Python program to split it into groups of perfectly matched parentheses without any whitespace. 
+Input: 
+( ()) ((()()())) (()) ()
+Output:
+['(())', '((()()()))', '(())', '()']
+Input: 
+() (( ( )() ( )) ) ( ())
+Output:
+['()', '((()()()))', '(())']
+Click me to see the sample solution
+
+Solution
+
+
+def test(combined):
+   ls = []
+   s2 = ""
+   for s in combined.replace(' ', ''):
+       s2 += s
+       if s2.count("(") == s2.count(")"):
+           ls.append(s2)
+           s2 = ""
+   return ls
+combined = '( ()) ((()()())) (()) ()'
+print("Parentheses string:")
+print(combined)
+print("Separate parentheses groups of the said string:")
+print(test(combined))
+combined = '() (( ( )() (  )) ) ( ())'
+print("\nParentheses string:")
+print(combined)
+print("Separate parentheses groups of the said string:")
+print(test(combined))
+
+#----------#
+11. Write a Python program to find the indexes of numbers of a given list below a given threshold. 
+Input:
+[(100,(0, 12, 45, 3, 4923, 322, 105, 29, 15, 39, 55))]
+Output:
+[0, 1, 2, 3, 7, 8, 9, 10]
+Input:
+[(10,(0, 12, 4, 3, 49, 9, 1, 5, 3))]
+Output:
+[0, 2, 3, 5, 6, 7, 8]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums, n):
+    return [i for i,n in enumerate(nums) if n<thresh]
+
+nums=[0, 12, 45, 3, 4923, 322, 105, 29, 15, 39, 55]
+thresh = 100
+print("Original list:")
+print(nums)
+print("Threshold: ",thresh)
+print("Check the indexes of numbers of the said list below the given threshold:")
+print(test(nums, thresh))
+nums=[0, 12, 4, 3, 49, 9, 1, 5, 3]
+thresh = 10
+print("\nOriginal list:")
+print(nums)
+print("Threshold: ",thresh)
+print("Check the indexes of numbers of the said list below the given threshold:")
+print(test(nums, thresh))
+
+#----------#
+12. Write a Python program to check whether the given strings are palindromes or not. Return True, False. 
+Input:
+['palindrome', 'madamimadam', '', 'foo', 'eyes']
+Output:
+[False, True, True, False, False]
+Click me to see the sample solution
+
+Solution
+
+
+def test(strs):
+    return [s == s[::-1] for s in strs]
+strs = ['palindrome', 'madamimadam', '', 'foo', 'eyes']
+print("Original strings:")
+print(strs)
+print("\nTest whether the given strings are palindromes or not:")
+print(test(strs))
+
+#----------#
+13. Write a Python program to find the strings in a given list, starting with a given prefix. 
+Input:
+[( ca,('cat', 'car', 'fear', 'center'))]
+Output:
+['cat', 'car']
+Input:
+[(do,('cat', 'dog', 'shatter', 'donut', 'at', 'todo'))]
+Output:
+['dog', 'donut']
+Click me to see the sample solution
+
+Solution
+
+
+def test(strs, prefix):
+     return [s for s in strs if s.startswith(prefix)]
+strs =  ['cat', 'car', 'fear', 'center']
+prefix = "ca"
+print("Original strings:")
+print(strs)
+print("Starting prefix:", prefix)
+print("Strings in the said list starting with a given prefix:")
+print(test(strs, prefix))
+strs =  ['cat', 'dog', 'shatter', 'donut', 'at', 'todo']
+prefix = "do"
+print("\nOriginal strings:")
+print(strs)
+print("Starting prefix:", prefix)
+print("Strings in the said list starting with a given prefix:")
+print(test(strs, prefix))
+
+#----------#
+14. Write a Python program to find the lengths of a given list of non-empty strings. 
+Input:
+['cat', 'car', 'fear', 'center']
+Output:
+[3, 3, 4, 6]
+Input:
+['cat', 'dog', 'shatter', 'donut', 'at', 'todo', '']
+Output:
+[3, 3, 7, 5, 2, 4, 0]
+Click me to see the sample solution
+
+Solution
+
+def test(strs):
+     return [*map(len, strs)]
+strs =  ['cat', 'car', 'fear', 'center']
+print("Original strings:")
+print(strs)
+print("Lengths of the said list of non-empty strings:")
+print(test(strs))
+strs =  ['cat', 'dog', 'shatter', 'donut', 'at', 'todo', '']
+print("\nOriginal strings:")
+print(strs)
+print("Lengths of the said list of non-empty strings:")
+print(test(strs))
+
+#----------#
+15. Write a Python program find the longest string of a given list of strings. 
+Input:
+['cat', 'car', 'fear', 'center']
+Output:
+center
+Input:
+['cat', 'dog', 'shatter', 'donut', 'at', 'todo', '']
+Output:
+shatter
+Click me to see the sample solution
+
+Solution
+def test(words):
+    return  max(words, key=len) 
+strs =  ['cat', 'car', 'fear', 'center']
+print("Original strings:")
+print(strs)
+print("Longest string of the said list of strings:")
+print(test(strs))
+strs =  ['cat', 'dog', 'shatter', 'donut', 'at', 'todo', '']
+print("\nOriginal strings:")
+print(strs)
+print("Longest string of the said list of strings:")
+print(test(strs))
+
+#----------#
+16. Write a Python program find the strings in a given list containing a given substring. 
+Input:
+[(ca,('cat', 'car', 'fear', 'center'))]
+Output:
+['cat', 'car']
+Input:
+[(o,('cat', 'dog', 'shatter', 'donut', 'at', 'todo', ''))]
+Output:
+['dog', 'donut', 'todo']
+Input:
+[(oe,('cat', 'dog', 'shatter', 'donut', 'at', 'todo', ''))]
+Output:
+[]
+Click me to see the sample solution
+
+Solution
+def test(strs, substr):
+    return [s for s in strs if substr in s]
+strs =  ['cat', 'car', 'fear', 'center']
+print("Original strings:")
+print(strs)
+substrs = 'ca'
+print("Substring: "+substrs)
+print("Strings in the said list containing a given substring:")
+print(test(strs, substrs))
+strs =  ['cat', 'dog', 'shatter', 'donut', 'at', 'todo', '']
+print("\nOriginal strings:")
+print(strs)
+substrs = 'o'
+print("Substring: "+substrs)
+print("Strings in the said list containing a given substring:")
+print(test(strs, substrs))
+strs =  ['cat', 'dog', 'shatter', 'donut', 'at', 'todo', '']
+print("\nOriginal strings:")
+print(strs)
+substrs = 'oe'
+print("Substring: "+substrs)
+print("Strings in the said list containing a given substring:")
+print(test(strs, substrs))
+
+#----------#
+17. Write a Python program to create string consisting of the non-negative integers up to n inclusive. 
+Input:
+4
+Output:
+0 1 2 3 4
+Input:
+15
+Output:
+0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15
+Click me to see the sample solution
+
+Solution
+def test(n):
+    return ' '.join(map(str,range(n+1)))
+n = 4
+print("Non-negative integer:")
+print(n)
+print("Non-negative integers up to n inclusive:")
+print(test(n))
+n = 15
+print("\nNon-negative integer:")
+print(n)
+print("Non-negative integers up to n inclusive:")
+print(test(n)) 
+
+#----------#
+18. An irregular/uneven matrix, or ragged matrix, is a matrix that has a different number of elements in each row. Ragged matrices are not used in linear algebra, since standard matrix transformations cannot be performed on them, but they are useful as arrays in computing.
+Write a Python program to find the indices of all occurrences of target in the uneven matrix. 
+Input:
+[([1, 3, 2, 32, 19], [19, 2, 48, 19], [], [9, 35, 4], [3, 19]),19]
+Output:
+[[0, 4], [1, 0], [1, 3], [4, 1]]
+Input:
+[([1, 2, 3, 2], [], [7, 9, 2, 1, 4]),2]
+Output:
+[[0, 1], [0, 3], [2, 2]]
+Click me to see the sample solution
+
+Solution
+def test(M, T):
+    return [[i, j] for i, row in enumerate(M) for j, n in enumerate(row) if n == T]
+M = [[1, 3, 2, 32, 19], [19, 2, 48, 19], [], [9, 35, 4], [3, 19]]
+T = 19
+print("Matrix:")
+print(M)
+print("Target value:")
+print(T)
+print("Indices of all occurrences of the target value in the said uneven matrix:")
+print(test(M,T))
+ 
+M = [[1, 2, 3, 2], [], [7, 9, 2, 1, 4]]
+T = 2
+print("\nMatrix:")
+print(M)
+print("Target value:")
+print(T)
+print("Indices of all occurrences of the target value in the said uneven matrix:")
+print(test(M,T)) 
+
+#----------#
+19. Write a Python program to split a given string (s) into strings if there is a space in the string, otherwise split on commas if there is a comma, otherwise return the list of lowercase letters with odd order (order of a = 0, b = 1, etc.) 
+Input:
+a b c d
+Split the said string into strings if there is a space in the string, 
+otherwise split on commas if there is a comma, 
+Output:
+['a', 'b', 'c', 'd']
+Input:
+a,b,c,d
+Split the said string into strings if there is a space in the string, 
+otherwise split on commas if there is a comma, 
+Output:
+['a', 'b', 'c', 'd']
+Input:
+abcd
+Split the said string into strings if there is a space in the string, 
+otherwise split on commas if there is a comma,
+Output:
+['b', 'd']
+Click me to see the sample solution
+
+Solution
+
+
+def test(s):
+    if " " in s:
+        return s.split(" ")
+    if "," in s:
+        return s.split(",")
+    return [c for c in s if c.islower() and ord(c) % 2 == 0]
+
+strs = "a b c d"
+print("Original string:")
+print(strs)
+print("Split the said string into strings if there is a space in the string, \notherwise split on commas if there is a comma, \notherwise return the list of lowercase letters with odd order:")
+print(test(strs))
+strs = "a,b,c,d"
+print("\nOriginal string:")
+print(strs)
+print("Split the said string into strings if there is a space in the string, \notherwise split on commas if there is a comma, \notherwise return the list of lowercase letters with odd order:")
+print(test(strs))
+strs = "abcd"
+print("\nOriginal string:")
+print(strs)
+print("Split the said string into strings if there is a space in the string, \notherwise split on commas if there is a comma, \notherwise return the list of lowercase letters with odd order:")
+print(test(strs))
+
+#----------#
+20. Write a Python program to determine the direction ('increasing' or 'decreasing') of monotonic sequence numbers. 
+Input:
+[1, 2, 3, 4, 5, 6]
+Output:
+Increasing.
+Input:
+[6, 5, 4, 3, 2, 1]
+Output:
+Decreasing.
+Input:
+[19, 19, 5, 5, 5, 5, 5]
+Output:
+Not a monotonic sequence!
+Click me to see the sample solution
+
+Solution
+
+def test(nums):
+    return "Increasing." if all(nums[i] < nums[i + 1] for i in range(len(nums) - 1)) else \
+        "Decreasing." if all(nums[i + 1] < nums[i] for i in range(len(nums) - 1)) else \
+        "Not a monotonic sequence!"
+nums = [1,2,3,4,5,6]
+print("Original list:")
+print(nums)
+print("Check the direction ('increasing' or 'decreasing') of the said list:")
+print(test(nums))
+nums = [6,5,4,3,2,1]
+print("\nOriginal list:")
+print(nums)
+print("Check the direction ('increasing' or 'decreasing') of the said list:")
+print(test(nums))
+nums = [19,19,5,5,5,5,5]
+print("\nOriginal list:")
+print(nums)
+print("Check the direction ('increasing' or 'decreasing') of the said list:")
+print(test(nums))
+
+#----------#
+21. Write a Python program to check, for each string in a given list, whether the last character is an isolated letter or not. Return True or False. 
+Input:
+['cat', 'car', 'fear', 'center']
+Output:
+[False, False, False, False]
+Input:
+['ca t', 'car', 'fea r', 'cente r']
+Output:
+[True, False, True, True]
+Click me to see the sample solution
+
+Solution
+
+
+def test(strs):
+    return [len(s.split(" ")[-1])==1 for s in strs]
+strs =  ['cat', 'car', 'fear', 'center']
+print("Original strings:")
+print(strs)
+print("Check, for each string in the said list, whether the last character is an isolated letter:")
+print(test(strs))
+strs =  ['ca t', 'car', 'fea r', 'cente r']
+print("\nOriginal strings:")
+print(strs)
+print("Check, for each string in the said list, whether the last character is an isolated letter:")
+print(test(strs))
+
+#----------#
+22. Write a Python program to compute the sum of the ASCII values of the upper-case characters in a given string. 
+Input:
+PytHon ExerciSEs
+Output:
+373
+Input:
+JavaScript
+Output:
+157
+Click me to see the sample solution
+
+Solution
+
+
+def test(strs):
+    return sum(map(ord,filter(str.isupper,strs)))
+strs =  "PytHon ExerciSEs"
+print("Original strings:")
+print(strs)
+print("Sum of the ASCII values of the upper-case characters in the said string:")
+print(test(strs))
+strs =  "JavaScript"
+print("\nOriginal strings:")
+print(strs)
+print("Sum of the ASCII values of the upper-case characters in the said string:")
+print(test(strs))
+
+
+#----------#
+23. Write a Python program to find the indices for which the numbers in the list drops. 
+NOTE: You can detect multiple drops just by checking if nums[i] < nums[i-1]
+Input:
+[0, -1, 3, 8, 5, 9, 8, 14, 2, 4, 3, -10, 10, 17, 41, 22, -4, -4, -15, 0]
+Output:
+[1, 4, 6, 8, 10, 11, 15, 16, 18]
+Input:
+[6, 5, 4, 3, 2, 1]
+Output:
+[1, 2, 3, 4, 5]
+Input:
+[1, 19, 5, 15, 5, 25, 5]
+Output:
+[0, 2, 4, 6]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+   drop_indices = []
+   for i in range(1, len(nums)):
+       if nums[i] < nums[i - 1]:
+           drop_indices.append(i)
+   return drop_indices
+nums = [0, -1, 3, 8, 5, 9, 8, 14, 2, 4, 3, -10, 10, 17, 41, 22, -4, -4, -15, 0]
+print("Original list:")
+print(nums)
+print("Indices for which the numbers of the said list drops.:")
+print(test(nums))
+nums = [6,5,4,3,2,1]
+print("\nOriginal list:")
+print(nums)
+print("Indices for which the numbers of the said list drops.:")
+print(test(nums))
+nums = [1,19,5,15,5,25,5]
+print("\nOriginal list:")
+print(nums)
+print("Indices for which the numbers of the said list drops.:")
+print(test(nums))
+
+#----------#
+24. Write a Python program to create a list whose ith element is the maximum of the first i elements from a input list. 
+Input:
+[0, -1, 3, 8, 5, 9, 8, 14, 2, 4, 3, -10, 10, 17, 41, 22, -4, -4, -15, 0]
+Output:
+[0, 0, 3, 8, 8, 9, 9, 14, 14, 14, 14, 14, 14, 17, 41, 41, 41, 41, 41, 41]
+Input:
+[6, 5, 4, 3, 2, 1]
+Output:
+[6, 6, 6, 6, 6, 6]
+Input:
+[1, 19, 5, 15, 5, 25, 5]
+Output:
+[1, 19, 19, 19, 19, 25, 25]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    return [max(nums[:i]) for i in range(1, len(nums) + 1)]
+nums = [0, -1, 3, 8, 5, 9, 8, 14, 2, 4, 3, -10, 10, 17, 41, 22, -4, -4, -15, 0]
+print("Original list:")
+print(nums)
+print("List whose ith element is the maximum of the first i elements of the said list:")
+print(test(nums))
+nums = [6,5,4,3,2,1]
+print("\nOriginal list:")
+print(nums)
+print("List whose ith element is the maximum of the first i elements of the said list:")
+print(test(nums))
+nums = [1,19,5,15,5,25,5]
+print("\nOriginal list:")
+print(nums)
+print("List whose ith element is the maximum of the first i elements of the said list:")
+print(test(nums))
+
+#----------#
+25. Write a Python program to find the XOR of two given strings interpreted as binary numbers. 
+Input:
+['0001', '1011']
+Output:
+0b1010
+Input:
+['100011101100001', '100101100101110']
+Output:
+0b110001001111
+Click me to see the sample solution
+
+Solution
+
+def test(nums):
+    return bin(int(nums[0],2) ^ int(nums[1],2))
+nums =  ["0001", "1011"]
+print("Original strings:")
+print(nums)
+print("XOR of two said strings interpreted as binary numbers:")
+print(test(nums))
+nums =  ["100011101100001", "100101100101110"]
+print("\nOriginal strings:")
+print(nums)
+print("XOR of two said strings interpreted as binary numbers:")
+print(test(nums))
+
+#----------#
+26. Write a Python program to find the largest number where commas or periods are decimal points. 
+Input:
+['100', '102,1', '101.1']
+Output:
+102.1
+Click me to see the sample solution
+
+Solution
+
+
+def test(str_nums):
+    return max(float(s.replace(",", ".")) for s in str_nums)
+str_nums = ["100", "102,1", "101.1"]
+print("Original list:")
+print(str_nums)
+print("Largest number where commas or periods are decimal points:")
+print(test(str_nums))
+
+#----------#
+27. Write a Python program to find x that minimizes mean squared deviation from a given a list of numbers. 
+Input:
+[4, -5, 17, -9, 14, 108, -9]
+Output:
+17.142857142857142
+Input:
+[12, -2, 14, 3, -15, 10, -45, 3, 30]
+Output:
+1.1111111111111112
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    return sum(nums) / len(nums) 
+nums = [4, -5, 17, -9, 14, 108, -9]
+print("Original list:")
+print(nums)
+print("Minimizes mean squared deviation from the said list of numbers:")
+print(test(nums))
+nums = [12, -2, 14, 3, -15, 10, -45, 3, 30]
+print("Original list:")
+print(nums)
+print("Minimizes mean squared deviation from the said list of numbers:")
+print(test(nums))
+
+#----------#
+28. Write a Python program to select a string from a given list of strings with the most unique characters. 
+Input:
+['cat', 'catatatatctsa', 'abcdefhijklmnop', '124259239185125', '', 'foo', 'unique']
+Output:
+abcdefhijklmnop
+Input:
+['Green', 'Red', 'Orange', 'Yellow', '', 'White']
+Output:
+Orange
+Click me to see the sample solution
+
+Solution
+
+def test(strs):
+    return max(strs, key=lambda x: len(set(x)))
+strs = ['cat', 'catatatatctsa', 'abcdefhijklmnop', '124259239185125', '', 'foo', 'unique']
+print("Original list:")
+print(strs)
+print("Select a string from the said list of strings with the most unique characters:")
+print(test(strs))
+strs = ['Green', 'Red', 'Orange', 'Yellow', '', 'White']
+print("\nOriginal list:")
+print(strs)
+print("Select a string from the said list of strings with the most unique characters:")
+print(test(strs))
+
+#----------#
+29. Write a Python program to find the indices of two numbers that sum to 0 in a given list of numbers. 
+Input:
+[1, -4, 6, 7, 4]
+Output:
+[4, 1]
+Input:
+[1232, -20352, 12547, 12440, 741, 341, 525, 20352, 91, 20]
+Output:
+[1, 7]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    s = set(nums)
+    for i in s:
+        if -i in s:
+            return [nums.index(i), nums.index(-i)]
+
+nums = [1, -4, 6, 7, 4]
+print("Original List:")
+print(nums) 
+print("Indices of two numbers that sum to 0 in the said list:")
+print(test(nums))
+nums=[1232, -20352, 12547, 12440, 741, 341, 525, 20352, 91, 20]
+print("\nOriginal List:")
+print(nums) 
+print("Indices of two numbers that sum to 0 in the said list:")
+print(test(nums)) 
+
+#----------#
+30. Write a Python program to find the list of strings that has fewer total characters (including repetitions). 
+Input:
+[['this', 'list', 'is', 'narrow'], ['I', 'am', 'shorter but wider']]
+Output:
+['this', 'list', 'is', 'narrow']
+Input:
+[['Red', 'Black', 'Pink'], ['Green', 'Red', 'White']]
+Output:
+['Red', 'Black', 'Pink']
+Click me to see the sample solution
+
+Solution
+
+
+def test(strs):
+    return min(strs, key=lambda x: sum(len(i) for i in x)) 
+strs = [['this', 'list', 'is', 'narrow'], ['I', 'am', 'shorter but wider']]
+print("Original List:")
+print(strs) 
+print("\nFind the given list of strings that has fewer total characters:")
+print(test(strs))
+strs = [['Red', 'Black', 'Pink'], ['Green', 'Red', 'White']]
+print("\nOriginal List:")
+print(strs) 
+print("\nFind the given list of strings that has fewer total characters:")
+print(test(strs))
+
+#----------#
+31. Write a Python program to find the coordinates of a triangle with the given side lengths. 
+Input: 
+[3, 4, 5]
+Output:
+[[0.0, 0.0], [3, 0.0], [3.0, 4.0]]
+Input: 
+[5, 6, 7]
+Output:
+[[0.0, 0.0], [5, 0.0], [3.8, 5.878775382679628]]
+Click me to see the sample solution
+
+Solution
+
+
+def test(sides):
+   a, b, c = sorted(sides)
+   s = sum(sides) / 2 # semi-perimeter
+   area = (s * (s - a) * (s - b) * (s - c)) ** 0.5 # Heron's formula
+   y = 2 * area / a # height
+   x = (c ** 2 - y ** 2) ** 0.5
+   return [[0.0, 0.0], [a, 0.0], [x, y]]
+sides = [3, 4, 5]
+print("Sides of the triangle:",sides)
+print("Coordinates of a triangle with the said side lengths:")
+print(test(sides))
+sides = [5, 6, 7]
+print("\nSides of the triangle:",sides)
+print("Coordinates of a triangle with the said side lengths:")
+print(test(sides))
+
+#----------#
+32. Write a Python program to rescale and shift numbers of a given list, so that they cover the range [0, 1]. 
+Input:
+[18.5, 17.0, 18.0, 19.0, 18.0]
+Output:
+[0.75, 0.0, 0.5, 1.0, 0.5]
+Input:
+[13.0, 17.0, 17.0, 15.5, 2.94]
+Output:
+[0.7155049786628734, 1.0, 1.0, 0.8933143669985776, 0.0]
+Click me to see the sample solution
+
+Solution
+def test(nums):
+    a = min(nums)
+    b = max(nums)
+    if b - a == 0:
+        return [0.0] + [1.0] * (len(nums) - 1)
+    for i in range(len(nums)):
+        nums[i] = (nums[i] - a) / (b - a)
+    return nums
+
+nums = [18.5, 17.0, 18.0, 19.0, 18.0]
+print("Original list:")
+print(nums)
+print("Rescale and shift the numbers of the said list so that they cover the range [0, 1]:")
+print(test(nums))
+nums = [13.0, 17.0, 17.0, 15.5, 2.94]
+print("\nOriginal list:")
+print(nums)
+print("Rescale and shift the numbers of the said list so that they cover the range [0, 1]:")
+print(test(nums))
+
+#----------#
+33. Write a Python program to find the positions of all uppercase vowels (not counting Y) in even indices of a given string. 
+Input: w3rEsOUrcE 
+Output:
+[6]
+Input: AEIOUYW 
+Output:
+[0, 2, 4]
+Click me to see the sample solution
+
+Solution
+
+
+def test(strs):
+    return [i for i, c in enumerate(strs) if i % 2 == 0 and c in "AEIOU"] 
+strs = "w3rEsOUrcE "
+print("Original List:",strs)
+print("Positions of all uppercase vowels (not counting Y) in even indices:")
+print(test(strs))
+strs = "AEIOUYW "
+print("\nOriginal List:",strs)
+print("Positions of all uppercase vowels (not counting Y) in even indices:")
+print(test(strs))
+
+#----------#
+34. Write a Python program to find the sum of the numbers of a given list among the first k with more than 2 digits. 
+Input: [4, 5, 17, 9, 14, 108, -9, 12, 76]
+Value of K: 4
+Output:
+0
+Input: [4, 5, 17, 9, 14, 108, -9, 12, 76]
+Value of K: 6
+Output:
+108
+Input: [114, 215, -117, 119, 14, 108, -9, 12, 76]
+Value of K: 5
+Output:
+331
+Input: [114, 215, -117, 119, 14, 108, -9, 12, 76]
+Value of K: 1
+Output:
+114
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums, k):
+    s = 0
+    for i in range(len(nums))[:k]:
+        if len(str(abs(nums[i])))>2:
+            s = s + nums[i]
+    return s
+
+nums = [4, 5, 17, 9, 14, 108, -9, 12 ,76]
+print("Original list:",nums)
+K = 4
+print("Value of K:",K)
+print("sum of the numbers among the first k with more than 2 digits")
+print(test(nums, K))
+nums = [4, 5, 17, 9, 14, 108, -9, 12 ,76]
+print("\nOriginal list:",nums)
+K = 6
+print("Value of K:",K)
+print("sum of the numbers among the first k with more than 2 digits")
+print(test(nums, K))
+nums = [114, 215, -117, 119, 14, 108, -9, 12 ,76]
+print("\nOriginal list:",nums)
+K = 5
+print("Value of K:",K)
+print("sum of the numbers among the first k with more than 2 digits")
+print(test(nums, K)) 
+print("\nOriginal list:",nums)
+K = 1
+print("Value of K:",K)
+print("sum of the numbers among the first k with more than 2 digits")
+print(test(nums, K))  
+
+#----------#
+35. Write a Python program to compute the product of the odd digits in a given number, or 0 if there aren't any. 
+Input: 123456789
+Output:
+945
+Input: 2468
+Output:
+0
+Input: 13579
+Output:
+945
+Click me to see the sample solution
+
+Solution
+
+
+def test(n):
+    if any(int(c) % 2 for c in str(n)):
+        prod = 1
+        for c in str(n):
+            if int(c) % 2 == 1:
+                prod *= int(c)
+        return prod
+    return 0
+
+n = 123456789
+print("Original Number:",n)
+print("Product of the odd digits in the said number, or 0 if there aren't any")
+print(test(n))
+n = 2468
+print("\nOriginal Number:",n)
+print("Product of the odd digits in the said number, or 0 if there aren't any")
+print(test(n))
+n = 13579
+print("\nOriginal Number:",n)
+print("Product of the odd digits in the said number, or 0 if there aren't any")
+print(test(n))
+
+#----------#
+36. Write a Python program to find the largest k numbers from a given list of numbers. 
+Input: [1, 2, 3, 4, 5, 5, 3, 6, 2]
+Output:
+[6]
+Input: [1, 2, 3, 4, 5, 5, 3, 6, 2]
+Output:
+[6, 5]
+Input: [1, 2, 3, 4, 5, 5, 3, 6, 2]
+Output:
+[6, 5, 5]
+Input: [1, 2, 3, 4, 5, 5, 3, 6, 2]
+Output:
+[6, 5, 5, 4]
+Input: [1, 2, 3, 4, 5, 5, 3, 6, 2]
+Output:
+[6, 5, 5, 4, 3]
+Click me to see the sample solution
+
+Solution
+ 
+
+def test(nums, k):
+    if k == 0:
+        return []
+    return sorted(nums, reverse=True)[:k]
+nums = [1, 2, 3, 4, 5, 5, 3, 6, 2] 
+print("Original list of numbers:",nums)
+k = 1
+print("Largest", k, "numbers from the said list:")
+print(test(nums, k))
+k = 2
+print("Largest", k, "numbers from the said list:")
+print(test(nums, k))
+k = 3
+print("Largest", k, "numbers from the said list:")
+print(test(nums, k))
+k = 4
+print("Largest", k, "numbers from the said list:")
+print(test(nums, k))
+k = 5
+print("Largest", k, "numbers from the said list:")
+print(test(nums, k))
+
+#----------#
+37. Write a Python program to find the largest integer divisor of a number n that is less than n. 
+Input: 18
+Output:
+9
+Input: 100
+Output:
+50
+Input: 102
+Output:
+51
+Input: 500
+Output:
+250
+Input: 1000
+Output:
+500
+Input: 6500
+Output:
+3250
+Click me to see the sample solution
+
+Solution
+
+
+def test(n):
+     return next(d for d in range(n - 1, 0, -1) if n % d == 0)
+ 
+n = 18
+print("Original number:",n)
+print("Largest integer divisor of a number n that is less than n:")
+print(test(n))
+n = 100
+print("Original number:",n)
+print("Largest integer divisor of a number n that is less than n:")
+print(test(n))
+n = 102
+print("Original number:",n)
+print("Largest integer divisor of a number n that is less than n:")
+print(test(n))
+n = 500
+print("Original number:",n)
+print("Largest integer divisor of a number n that is less than n:")
+print(test(n))
+n = 1000
+print("Original number:",n)
+print("Largest integer divisor of a number n that is less than n:")
+print(test(n))
+n = 6500
+print("Original number:",n)
+print("Largest integer divisor of a number n that is less than n:")
+print(test(n))
+
+#----------#
+38. Write a Python program to sort the numbers of a given list by the sum of their digits. 
+Input: [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20] 
+Output:
+[10, 11, 20, 12, 13, 14, 15, 16, 17, 18, 19]
+Input: [23, 2, 9, 34, 8, 9, 10, 74] 
+Output:
+[10, 2, 23, 34, 8, 9, 9, 74]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+     return sorted(nums, key=lambda n: sum(int(c) for c in str(n) if c != "-"))
+ 
+nums = [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+print("Original list of numbers:",nums)
+print("Sort the numbers of the said list by the sum of their digits:")
+print(test(nums))
+nums = [23,2,9,34,8,9,10,74]
+print("\nOriginal list of numbers:",nums)
+print("Sort the numbers of the said list by the sum of their digits:")
+print(test(nums))
+
+#----------#
+39. Write a Python program to determine which triples sum to zero from a given list of lists. 
+Input: [[1343532, -2920635, 332], [-27, 18, 9], [4, 0, -4], [2, 2, 2], [-20, 16, 4]] 
+Output:
+[False, True, True, False, True]
+Input: [[1, 2, -3], [-4, 0, 4], [0, 1, -5], [1, 1, 1], [-2, 4, -1]]
+Output:
+[True, True, False, False, False]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    return [sum(t)==0 for t in nums]
+ 
+nums = [[1343532, -2920635, 332], [-27, 18, 9], [4, 0, -4], [2, 2, 2], [-20, 16, 4]]
+print("Original list of lists:",nums)
+print("Determine which triples sum to zero:")
+print(test(nums))
+nums = [[1, 2, -3], [-4, 0, 4], [0, 1, -5], [1, 1, 1], [-2, 4, -1]]
+print("\nOriginal list of lists:",nums)
+print("Determine which triples sum to zero:")
+print(test(nums))  
+
+#----------#
+40. Write a Python program to find string s that, when case is flipped gives target where vowels are replaced by chars two later. 
+Input: Python
+Output:
+pYTHQN
+Input: aeiou
+Output:
+CGKQW
+Input: Hello, world!
+Output:
+hGLLQ, WQRLD!
+Input: AEIOU 
+Output:
+cgkqw
+Click me to see the sample solution
+
+Solution
+
+
+def test(strs):
+     return strs.translate({ord(c):ord(c)+2 for c in "aeiouAEIOU"}).swapcase()
+
+strs = "Python" 
+print("Original string:",strs)
+print("Find string s that, when case is flipped gives target where vowels are replaced by chars two later:")
+print(test(strs))
+strs = "aeiou" 
+print("\nOriginal string:",strs)
+print("Find string s that, when case is flipped gives target where vowels are replaced by chars two later:")
+print(test(strs))
+strs = "Hello, world!" 
+print("\nOriginal string:",strs)
+print("Find string s that, when case is flipped gives target where vowels are replaced by chars two later:")
+print(test(strs))
+strs = "AEIOU" 
+print("\nOriginal string:",strs)
+print("Find string s that, when case is flipped gives target where vowels are replaced by chars two later:")
+print(test(strs)) 
+
+#----------#
+41. Write a Python program to sort numbers based on strings. 
+Input: six one four one two three
+Output:
+one two three four six
+Input: six one four three two nine eight
+Output:
+one two three four six eight nine
+Input: nine eight seven six five four three two one
+Output:
+one two three four five six seven eight nine
+Click me to see the sample solution
+
+Solution
+
+
+def test(strs):
+    return ' '.join([x for x in 'one two three four five six seven eight nine'.split() if x in strs])
+strs = "six one four one two three"
+print("Original string:",strs)
+print("Sort numbers based on said strings:")
+print(test(strs))
+strs = "six one four three two nine eight"
+print("\nOriginal string:",strs)
+print("Sort numbers based on said strings:")
+print(test(strs))
+strs = "nine eight seven six five four three two  one"
+print("\nOriginal string:",strs)
+print("Sort numbers based on said strings:")
+print(test(strs))
+
+#----------#
+42. Write a Python program to find the set of distinct characters in a given string, ignoring case. 
+Input: HELLO
+Output:
+['h', 'o', 'l', 'e']
+Input: HelLo
+Output:
+['h', 'o', 'l', 'e']
+Input: Ignoring case
+Output:
+['s', 'n', 'c', 'o', 'e', 'i', 'r', 'g', 'a', ' ']
+Click me to see the sample solution
+
+Solution
+
+
+def test(strs):
+    return [*set(strs.lower())]
+ 
+strs = "HELLO"
+print("Original string:",strs)
+print("Set of distinct characters in the said string, ignoring case:")
+print(test(strs))
+strs = "HelLo"
+print("\nOriginal string:",strs)
+print("Set of distinct characters in the said string, ignoring case:")
+print(test(strs))
+strs = "Ignoring case"
+print("\nOriginal string:",strs)
+print("Set of distinct characters in the said string, ignoring case:")
+print(test(strs))
+
+#----------#
+43. Write a Python program to find all words in a given string with n consonants. 
+Input: this is our time
+Output:
+Number of consonants: 3
+Words in the said string with 3 consonants:
+['this']
+Number of consonants: 2
+Words in the said string with 2 consonants:
+['time']
+Number of consonants: 1
+Words in the said string with 1 consonants:
+['is', 'our']
+Click me to see the sample solution
+
+Solution
+
+
+def test(strs, n):
+    return [w for w in strs.split() if sum([c not in "aeiou" for c in w.lower()]) == n]
+strs = "this is our time"
+print("Original string:",strs)
+n = 3
+print("Number of consonants:",n)
+print("Words in the said string with",n,"consonants:")
+print(test(strs, n))
+n = 2
+print("\nNumber of consonants:",n)
+print("Words in the said string with",n,"consonants:")
+print(test(strs, n))
+n = 1
+print("\nNumber of consonants:",n)
+print("Words in the said string with",n,"consonants:")
+print(test(strs, n))
+
+#----------#
+44. Write a Python program to find which characters of a hexadecimal number correspond to prime numbers. 
+Input: 123ABCD
+Output:
+[False, True, True, False, True, False, True]
+Input: 123456
+Output:
+[False, True, True, False, True, False]
+Input: FACE
+Output:
+[False, False, False, False]
+Click me to see the sample solution
+
+Solution
+
+
+def test(hn):
+    return [c in "2357BD" for c in hn] 
+hn = "123ABCD"
+print("Original hexadecimal number:",hn) 
+print("Characters of the said hexadecimal number correspond to prime numbers:")
+print(test(hn))
+hn = "123456"
+print("\nOriginal hexadecimal number:",hn) 
+print("Characters of the said hexadecimal number correspond to prime numbers:")
+print(test(hn))
+hn = "FACE"
+print("\nOriginal hexadecimal number:",hn) 
+print("Characters of the said hexadecimal number correspond to prime numbers:")
+print(test(hn))
+
+#----------#
+45. Write a Python program to find all even palindromes up to n. 
+Output:
+Even palindromes up to 50 -
+[0, 2, 4, 6, 8, 22, 44]
+Even palindromes up to 100 -
+[0, 2, 4, 6, 8, 22, 44, 66, 88]
+Even palindromes up to 500 -
+[0, 2, 4, 6, 8, 22, 44, 66, 88, 202, 212, 222, 232, 242, 252, 262, 272, 282, 292, 404, 414, 424, 434, 444, 454, 464, 474, 484, 494]
+Even palindromes up to 2000 -
+[0, 2, 4, 6, 8, 22, 44, 66, 88, 202, 212, 222, 232, 242, 252, 262, 272, 282, 292, 404, 414, 424, 434, 444, 454, 464, 474, 484, 494, 606, 616, 626, 636, 646, 656, 666, 676, 686, 696, 808, 818, 828, 838, 848, 858, 868, 878, 888, 898]
+Click me to see the sample solution
+
+Solution
+
+
+def test(n):
+    return [i for i in range(0,n,2) if str(i) == str(i)[::-1]] 
+n = 50
+print("\nEven palindromes up to",n,"-")
+print(test(n))
+n = 100
+print("\nEven palindromes up to",n,"-")
+print(test(n))
+n = 500
+print("\nEven palindromes up to",n,"-")
+print(test(n))
+n = 2000
+print("\nEven palindromes up to",n,"-")
+print(test(n))
+
+#----------#
+46. Given an array of numbers representing a branch on a binary tree, write a Python program to find the minimum even value and its index. In the case of a tie, return the smallest index. If there are no even numbers, the answer is []. 
+Input:
+[1, 9, 4, 6, 10, 11, 14, 8]
+Output:
+Minimum even value and its index of the said array of numbers:
+[4, 2]
+Input:
+[1, 7, 4, 4, 9, 2]
+Output:
+Minimum even value and its index of the said array of numbers:
+[2, 5]
+Input:
+[1, 7, 7, 5, 9]
+Output:
+Minimum even value and its index of the said array of numbers:
+[]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    if any(n % 2 == 0 for n in nums):
+        return min([v, i] for i, v in enumerate(nums) if v % 2 == 0)
+    else:
+        return []
+
+nums =  [1, 9, 4, 6, 10, 11, 14, 8]
+print("Original list:")
+print(nums)
+print("Minimum even value and its index of the said array of numbers:")
+print(test(nums))
+nums =  [1, 7, 4, 4, 9, 2]
+print("Original list:")
+print(nums)
+print("Minimum even value and its index of the said array of numbers:")
+print(test(nums)) 
+nums =  [1, 7, 7, 5, 9]
+print("Original list:")
+print(nums)
+print("Minimum even value and its index of the said array of numbers:")
+print(test(nums)) 
+
+#----------#
+47. Write a Python program to Filter for the numbers in numbers in a given list whose sum of digits is > 0, where the first digit can be negative. 
+Input:
+[11, -6, -103, -200]
+Output:
+[11, -103]
+Input:
+[1, 7, -4, 4, -9, 2]
+Output:
+[1, 7, 4, 2]
+Input:
+[10, -11, -71, -13, 14, -32]
+Output:
+[10, -13, 14]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    return [n for n in nums if int(str(n)[:2]) + sum(map(int, str(n)[2:])) > 0]
+nums =  [11, -6, -103, -200]
+print("Original list:")
+print(nums)
+print("Find the numbers in the said list whose sum of digits is >0, where the first digit can be negative:")
+print(test(nums))
+nums =  [1, 7, -4, 4, -9, 2]
+print("\nOriginal list:")
+print(nums)
+print("Find the numbers in the said list whose sum of digits is >0, where the first digit can be negative:")
+print(test(nums)) 
+nums =  [10, -11, -71, -13, 14, -32]
+print("\nOriginal list:")
+print(nums)
+print("Find the numbers in the said list whose sum of digits is >0, where the first digit can be negative:")
+print(test(nums))
+
+#----------#
+48. Write a Python program to find the indices of two entries that show that the list is not in increasing order. If there are no violations (they are increasing), return an empty list. 
+Input:
+[1, 2, 3, 0, 4, 5, 6]
+Output:
+[2, 3]
+Input:
+[1, 2, 3, 4, 5, 6]
+Output:
+[]
+Input:
+[1, 2, 3, 4, 6, 5, 7]
+Output:
+[4, 5]
+Input:
+[-3, -2, -3, 0, 2, 3, 4]
+Output:
+[1, 2]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    for i in range(len(nums) - 1):
+        if nums[i] >= nums[i + 1]:
+            return [i, i + 1]
+    return []
+
+nums =  [1,2,3,0,4,5,6]
+print("Original list:")
+print(nums)
+print("Indices of two entries that show that the list is not in increasing order:")
+print(test(nums))
+nums =  [1,2,3,4,5,6]
+print("\nOriginal list:")
+print(nums)
+print("Indices of two entries that show that the list is not in increasing order:")
+print(test(nums))
+nums =  [1,2,3,4,6,5,7]
+print("\nOriginal list:")
+print(nums)
+print("Indices of two entries that show that the list is not in increasing order:")
+print(test(nums))
+nums =  [-3,-2,-3,0,2,3,4]
+print("\nOriginal list:")
+print(nums)
+print("Indices of two entries that show that the list is not in increasing order:")
+print(test(nums)) 
+
+#----------#
+49. Write a Python program to find the h-index, the largest positive number h such that h occurs in the sequence at least h times. If there is no such positive number return h = -1. 
+Input:
+[1, 2, 2, 3, 3, 4, 4, 4, 4]
+Output:
+4
+Input:
+[1, 2, 2, 3, 4, 5, 6]
+Output:
+2
+Input:
+[3, 1, 4, 17, 5, 17, 2, 1, 41, 32, 2, 5, 5, 5, 5]
+Output:
+5
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    return max([-1] + [i for i in nums if i > 0 and nums.count(i) >= i])
+
+nums =  [1, 2, 2, 3, 3, 4, 4, 4, 4]
+print("Original list of numbers:")
+print(nums)
+print("h-index, the largest positive number h such that h occurs in the said sequence at least h times:")
+print(test(nums))
+nums =  [1,2,2,3,4,5,6]
+print("\nOriginal list of numbers:")
+print(nums)
+print("h-index, the largest positive number h such that h occurs in the said sequence at least h times:")
+print(test(nums))
+nums = [3, 1, 4, 17, 5, 17, 2, 1, 41, 32, 2, 5, 5, 5, 5]
+print("\nOriginal list of numbers:")
+print(nums)
+print("h-index, the largest positive number h such that h occurs in the said sequence at least h times:")
+print(test(nums))
+
+#----------#
+50. Write a Python program to find the even-length words from a given list of words and sort them by length. 
+Input:
+['Red', 'Black', 'White', 'Green', 'Pink', 'Orange']
+Output:
+['Pink', 'Orange']
+Input:
+['The', 'worm', 'ate', 'a', 'bird', 'imagine', 'that', '!', 'Absurd', '!!']
+Output:
+['!!', 'bird', 'that', 'worm', 'Absurd']
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+     return sorted([w for w in words if len(w) % 2 == 0], key=lambda w: (len(w), w))
+ 
+words = ["Red", "Black", "White", "Green", "Pink", "Orange"]
+print("Original list of words:")
+print(words)
+print("Find the even-length words and sort them by length in the said list of words:")
+print(test(words))
+words = ['The', 'worm', 'ate', 'a', 'bird', 'imagine', 'that', '!', 'Absurd', '!!']
+print("\nOriginal list of words:")
+print(words)
+print("Find the even-length words and sort them by length in the said list of words:")
+print(test(words))
+
+#----------#
+51. Write a Python program to find the first n Fibonacci numbers. 
+Input: 10
+Output:
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+Input: 15
+Output:
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610]
+Input: 50
+Output:
+[1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181, 6765, 10946, 17711, 28657, 46368, 75025, 121393, 196418, 317811, 514229, 832040, 1346269, 2178309, 3524578, 5702887, 9227465, 14930352, 24157817, 39088169, 63245986, 102334155, 165580141, 267914296, 433494437, 701408733, 1134903170, 1836311903, 2971215073, 4807526976, 7778742049, 12586269025]
+Click me to see the sample solution
+
+Solution
+def test(n):
+    a = [1, 1]
+    while len(a) < n: a += [sum(a[-2:])]
+    return a[:n]
+n = 10
+print("\nFind the first",n,"Fibonacci numbers:")    
+print(test(n))
+n = 15
+print("\nFind the first",n,"Fibonacci numbers:")    
+print(test(n))
+n = 50
+print("\nFind the first",n,"Fibonacci numbers:")    
+print(test(n))
+
+#----------#
+52. Write a Python program to reverse the case of all strings. For those strings, which contain no letters, reverse the strings. 
+Input:
+['cat', 'catatatatctsa', 'abcdefhijklmnop', '124259239185125', '', 'foo', 'unique']
+Output:
+['CAT', 'CATATATATCTSA', 'ABCDEFHIJKLMNOP', '521581932952421', '', 'FOO', 'UNIQUE']
+Input:
+['Green', 'Red', 'Orange', 'Yellow', '', 'White']
+Output:
+['gREEN', 'rED', 'oRANGE', 'yELLOW', '', 'wHITE']
+Input:
+['Hello', '[email protected]#', '[email protected]#$', '123#@!']
+Output:
+['hELLO', '[email protected]#', '[email protected]#$', '123#@!']
+Click me to see the sample solution
+
+Solution
+
+
+def test(strs):
+    return [s[::-1] if s.isdigit() else s.swapcase() for s in strs] 
+strs = ['cat', 'catatatatctsa', 'abcdefhijklmnop', '124259239185125', '', 'foo', 'unique']
+print("Original list:")
+print(strs)
+print("Reverse the case of all strings. For those strings which contain no letters, reverse the strings:")
+print(test(strs))
+strs = ['Green', 'Red', 'Orange', 'Yellow', '', 'White']
+print("\nOriginal list:")
+print(strs)
+print("Reverse the case of all strings. For those strings which contain no letters, reverse the strings:")
+print(test(strs))
+strs = ["Hello", "[email protected]#", "[email protected]#$", "123#@!"]
+print("\nOriginal list:")
+print(strs)
+print("Reverse the case of all strings. For those strings which contain no letters, reverse the strings:")
+print(test(strs))
+
+#----------#
+53. Write a Python program to find the product of the units digits in the numbers of a given list. 
+Input:
+[12, 23]
+Output:
+6
+Input:
+[12, 23, 43]
+Output:
+18
+Input:
+[113, 234]
+Output:
+12
+Input:
+[1002, 2005]
+Output:
+10
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+     return eval('*'.join([str(x % 10) for x in nums]))
+ 
+nums = [12, 23]
+print("Original list of numbers:")
+print(nums)
+print("Product of the units digits in the numbers of the said:")
+print(test(nums))
+nums = [12, 23, 43]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Product of the units digits in the numbers of the said:")
+print(test(nums))
+nums = [113, 234]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Product of the units digits in the numbers of the said:")
+print(test(nums))
+nums = [1002, 2005]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Product of the units digits in the numbers of the said:")
+print(test(nums))
+
+#----------#
+54. Write a Python program to remove duplicates from a list of integers, preserving order. 
+Input:
+[1, 3, 4, 10, 4, 1, 43]
+Output:
+[1, 3, 4, 10, 43]
+Input:
+[10, 11, 13, 23, 11, 25, 23, 76, 99]
+Output:
+[10, 11, 13, 23, 25, 76, 99]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    return list(dict.fromkeys(nums)) 
+nums = [1, 3, 4, 10, 4, 1, 43]
+print("Original list of numbers:")
+print(nums)
+print("Remove duplicates from the said list of integers, preserving order:")
+print(test(nums))
+nums = [10, 11, 13, 23, 11, 25, 23, 76, 99]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Remove duplicates from the said list of integers, preserving order:")
+print(test(nums)) 
+
+#----------#
+55. Write a Python program to find the numbers that are greater than 10 and have odd first and last digits. 
+Input:
+[1, 3, 79, 10, 4, 1, 39, 62]
+Output:
+[79, 39]
+Input:
+[11, 31, 77, 93, 48, 1, 57]
+Output:
+[11, 31, 77, 93, 57]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+      return [x for x in nums if x > 10 and x % 10 % 2 and int(str(x)[0]) % 2]
+  
+nums = [1, 3, 79, 10, 4, 1, 39]
+print("Original list of numbers:")
+print(nums)
+print("Numbers of the said array that are greater than 10 and have odd first and last digits:")
+print(test(nums))
+nums = [11, 31, 77, 93, 48, 1, 57]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Numbers of the said array that are greater than 10 and have odd first and last digits:")
+print(test(nums))
+
+#----------#
+56. Write a Python program to find an integer exponent x such that a^x = n. 
+Input:
+a = 2 : n = 1024
+Output:
+10
+Input:
+a = 3 : n = 81
+Output:
+4
+Input:
+a = 3 : n = 1290070078170102666248196035845070394933441741644993085810116441344597492642263849
+Output:
+170
+Click me to see the sample solution
+
+Solution
+def test(n,a):
+    m = 1
+    x = 0
+    while m != n:
+        x += 1
+        m *= a
+    return x
+
+a = 2
+n = 1024
+print("a = ",a,": n = ",n)
+print("Find an integer exponent x such that a^x = n:")    
+print(test(n,a))
+a = 3
+n = 81
+print("a = ",a,": n = ",n)
+print("\nFind an integer exponent x such that a^x = n:")    
+print(test(n,a))
+a = 3
+n = 1290070078170102666248196035845070394933441741644993085810116441344597492642263849
+print("a = ",a,": n = ",n)
+print("\nFind an integer exponent x such that a^x = n:")    
+print(test(n,a))
+
+#----------#
+57. Write a Python program to find the sum of the magnitudes of the elements in the array with a sign that is equal to the product of the signs of the entries. 
+Input:
+[1, 3, -2]
+Output:
+-6
+Input:
+[1, -3, 3]
+Output:
+-7
+Input:
+[10, 32, 3]
+Output:
+45
+Input:
+[-25, -12, -23]
+Output:
+-60
+Click me to see the sample solution
+
+Solution
+def test(nums):
+    tot = sum(abs(i) for i in nums)
+    if all(nums):
+        return tot if sum(i < 0 for i in nums) % 2 == 0 else -tot
+    return 0
+
+nums = [1, 3, -2]
+print("Original list of numbers:")
+print(nums)
+print("Sum of the magnitudes of the elements in the array with a sign that is equal to the product of the signs of the entries:")
+print(test(nums))
+nums = [1, -3, 3]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Sum of the magnitudes of the elements in the array with a sign that is equal to the product of the signs of the entries:")
+print(test(nums))
+nums = [10, 32, 3]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Sum of the magnitudes of the elements in the array with a sign that is equal to the product of the signs of the entries:")
+print(test(nums))
+nums = [-25, -12, -23]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Sum of the magnitudes of the elements in the array with a sign that is equal to the product of the signs of the entries:")
+print(test(nums))
+
+#----------#
+58. Write a Python program to find the biggest even number between two numbers inclusive. 
+Input:
+m = 12
+n = 51
+Output:
+50
+Input:
+m = 1
+n = 79
+Output:
+78
+Input:
+m = 47
+n = 53
+Output:
+52
+Input:
+m = 100
+n = 200
+Output:
+200
+Click me to see the sample solution
+
+Solution
+def test(m, n):
+    if m > n or (m == n and m % 2 == 1):
+        return -1
+    return n if n % 2 == 0 else n - 1
+
+m = 12
+n = 51
+print("\nBiggest even number between",m,"and",n)
+print(test(m, n))
+m = 1
+n = 79
+print("\nBiggest even number between",m,"and",n)
+print(test(m, n))
+m = 47
+n = 53
+print("\nBiggest even number between",m,"and",n)
+print(test(m, n))
+m = 100
+n = 200
+print("\nBiggest even number between",m,"and",n)
+print(test(m, n))
+
+#----------#
+59. A valid filename should end in .txt, .exe, .jpg, .png, or .dll, and should have at most three digits, no additional periods. Write a Python program to create a list of True/False that determine whether candidate filename is valid or not. 
+Input:
+['abc.txt', 'windows.dll', 'tiger.png', 'rose.jpg', 'test.py', 'win32.exe']
+Output:
+['Yes', 'Yes', 'Yes', 'Yes', 'No', 'Yes']
+Input:
+['.txt', 'windows.exe', 'tiger.jpeg', 'rose.c', 'test.java']
+Output:
+['No', 'Yes', 'No', 'No', 'No']
+Click me to see the sample solution
+
+Solution
+def test(file_names):
+         return ["Yes" if
+            f.split(".")[1:] in [['txt'], ['png'], ['dll'], ['exe'], ['jpg']] and f[0].isalpha() and sum(c.isdigit() for c in f) < 4
+            else "No"
+            for f in file_names]
+ 
+file_names = ['abc.txt', 'windows.dll', 'tiger.png', 'rose.jpg', 'test.py', 'win32.exe']
+print("Original list of files:")
+print(file_names)
+print("Valid filenames:")
+print(test(file_names))
+file_names = ['.txt', 'windows.exe', 'tiger.jpeg', 'rose.c', 'test.java']
+print("\nOriginal list of files:")
+print(file_names)
+print("Valid filenames:")
+print(test(file_names))
+
+#----------#
+60. Write a Python program to find a list of all numbers that are adjacent to a prime number in the list, sorted without duplicates. 
+Input:
+[2, 17, 16, 0, 6, 4, 5]
+Output:
+[2, 4, 16, 17]
+Input:
+[1, 2, 19, 16, 6, 4, 10]
+Output:
+[1, 2, 16, 19]
+Input:
+[1, 2, 3, 5, 1, 16, 7, 11, 4]
+Output:
+[1, 2, 3, 4, 5, 7, 11, 16]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    return sorted({
+        n for i, n in enumerate(nums)
+        if (i > 0 and prime(nums[i - 1])) or (i < len(nums) - 1 and prime(nums[i + 1]))
+    })
+    
+def prime(m):
+  if (m>0):
+    return all(m % i for i in range(2, m - 1))   
+ 
+nums = [2, 17, 16, 0, 6, 4, 5]
+print("Original list of numbers:")
+print(nums)
+print("Numbers that are adjacent to a prime number in the said list, sorted without duplicates:")
+print(test(nums)) 
+nums = [1, 2, 19, 16, 6, 4, 10]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Numbers that are adjacent to a prime number in the said list, sorted without duplicates:")
+print(test(nums))
+nums = [1, 2, 3, 5, 1, 16, 7, 11, 4]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Numbers that are adjacent to a prime number in the said list, sorted without duplicates:")
+print(test(nums))
+
+#----------#
+61. Write a Python program to find the number which when appended to the list makes the total 0. 
+Input:
+[1, 2, 3, 4, 5]
+Output:
+-15
+Input:
+[-1, -2, -3, -4, 5]
+Output:
+5
+Input:
+[10, 42, 17, 9, 1315182, 184, 102, 29, 15, 39, 755]
+Output:
+-1316384
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    dset = set(nums)
+    result = sum(nums)
+    dmin = abs(min(nums) - sum(dset^set(nums)))
+    for d in dset^set(nums):
+        dcopy = list(nums)
+        dcopy.append(d)
+        ds = sum(dcopy)
+        if 0-ds < dmin:
+            result = ds
+            dmin = abs(ds)
+        elif 0-ds == dmin:
+            result = min(result, ds)
+    return result*(-1)
+ 
+nums = [1, 2, 3, 4, 5]
+print("Original list of numbers:")
+print(nums)
+print("Number which when appended to the list makes the total 0:")
+print(test(nums)) 
+nums = [-1, -2, -3, -4, 5]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Number which when appended to the list makes the total 0:")
+print(test(nums))  
+nums = [10, 42, 17, 9, 1315182, 184, 102, 29, 15, 39, 755]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Number which when appended to the list makes the total 0:")
+print(test(nums)) 
+
+#----------#
+62. Write a Python program to find the dictionary key whose case is different than all other keys. 
+Input:
+{'red': '', 'GREEN': '', 'blue': 'orange'}
+Output:
+GREEN
+Input:
+{'RED': '', 'GREEN': '', 'orange': '#125GD'}
+Output:
+orange
+Click me to see the sample solution
+
+Solution
+
+
+def test(dict_data):
+    for different in dict_data:
+        if all(k.islower() != different.islower() for k in dict_data if k != different):
+            return different
+ 
+dict_data = {"red": "", "GREEN": "", "blue": "orange"}
+print("Original dictionary key-values:")
+print(dict_data)
+print("Find the dictionary key whose case is different than all other keys:")
+print(test(dict_data)) 
+dict_data = {"RED": "", "GREEN": "", "orange": "#125GD"}
+print("\nOriginal dictionary key-values:")
+print(dict_data)
+print("Find the dictionary key whose case is different than all other keys:")
+print(test(dict_data))
+
+#----------#
+63. Write a Python program to find the sum of the even elements that are at odd indices. 
+Input:
+[1, 2, 3, 4, 5, 6, 7]
+Output:
+12
+Input:
+[1, 2, 8, 3, 9, 4]
+Output:
+6
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    return sum(i for i in nums[1::2] if i % 2 == 0) 
+nums = [1, 2, 3, 4, 5, 6, 7]
+print("Original list of numbers:")
+print(nums)
+print("Sum of the even elements of the said list that are at odd indices:")
+print(test(nums))
+nums = [1, 2, 8, 3, 9, 4] 
+print("\nOriginal list of numbers:")
+print(nums)
+print("Sum of the even elements of the said list that are at odd indices:")
+print(test(nums)) 
+
+#----------#
+64. Write a Python program to find the string consisting of all the words whose lengths are prime numbers. 
+Input:
+The quick brown fox jumps over the lazy dog.
+Output:
+The quick brown fox jumps the
+Input:
+Omicron Effect: Foreign Flights Won't Resume On Dec 15, Decision Later.
+Output:
+Omicron Effect: Foreign Flights Won't On Dec 15,
+Click me to see the sample solution
+
+Solution
+
+
+def test(strs):
+    return " ".join(strs for strs in strs.split() if is_prime(len(strs))) 
+def is_prime(n):
+    return n > 1 and all(n % j for j in range(2, int(n ** 0.5) + 1))
+strs = "The quick brown fox jumps over the lazy dog."
+print("Original list of numbers:")
+print(strs)
+print("Words whose lengths are prime numbers in the said string:")
+print(test(strs))
+strs = "Omicron Effect: Foreign Flights Won't Resume On Dec 15, Decision Later."
+print("\nOriginal list of numbers:")
+print(strs)
+print("Words whose lengths are prime numbers in the said string:")
+print(test(strs))
+
+#----------#
+65. Write a Python program to shift the decimal digits n places to the left, wrapping the extra digits around. If shift > the number of digits of n, reverse the string. 
+Input:
+n = 12345 and shift = 1
+Output:
+Result = 23451
+Input:
+n = 12345 and shift = 2
+Output:
+Result = 34512
+Input:
+n = 12345 and shift = 3
+Output:
+Result = 45123
+Input:
+n = 12345 and shift = 5
+Output:
+Result = 12345
+Input:
+n = 12345 and shift = 6
+Output:
+Result = 54321
+Click me to see the sample solution
+
+Solution
+
+
+def test(n, shift):
+    s = str(n)
+    if shift > len(s):
+        return s[::-1]
+    return s[shift:] + s[:shift]
+ 
+print("Shift the decimal digits n places to the left. If shift > the number of digits of n, reverse the string.:") 
+ 
+n = 12345
+shift = 1
+print("\nn =",n," and shift =",shift)
+print("Result = ",test(n, shift))
+n = 12345
+shift = 2
+print("\nn =",n," and shift =",shift)
+print("Result = ",test(n, shift))
+n = 12345
+shift = 3
+print("\nn =",n," and shift =",shift)
+print("Result = ",test(n, shift))
+n = 12345
+shift = 5
+print("\nn =",n," and shift =",shift)
+print("Result = ",test(n, shift))
+n = 12345
+shift = 6
+print("\nn =",n," and shift =",shift)
+print("Result = ",test(n, shift))
+
+#----------#
+66. Write a Python program to find the indices of the closest pair from a list of numbers. 
+Input: [1, 7, 9, 2, 10]
+Output:
+[0, 3]
+Input: [1.1, 4.25, 0.79, 1.0, 4.23]
+Output:
+[4, 1]
+Input: [0.21, 11.3, 2.01, 8.0, 10.0, 3.0, 15.2]
+Output:
+[2, 5]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    closest_inds = None
+    closest_dist = None
+    for ind, num in enumerate(nums):
+        for other_ind, num2 in enumerate(nums):
+            if num != num2 and ((closest_dist is None) or abs(num - num2) < closest_dist):
+                closest_dist = abs(num - num2)
+                closest_inds = [ind, other_ind]
+                if num <= num2:
+                    closest_inds = [ind, other_ind]
+                else:
+                    closest_inds = [other_ind, ind]
+    return closest_inds
+ 
+nums = [1, 7, 9, 2, 10]
+print("List of numbers:",nums)
+print("Indices of the closest pair from the said list of numbers:")
+print(test(nums))
+
+nums = [1.1, 4.25, 0.79, 1.0, 4.23]
+print("\nList of numbers:",nums)
+print("Indices of the closest pair from the said list of numbers:")
+print(test(nums))
+nums = [0.21, 11.3, 2.01, 8.0, 10.0, 3.0, 15.2]
+print("\nList of numbers:",nums)
+print("Indices of the closest pair from the said list of numbers:")
+print(test(nums))
+
+#----------#
+67. Write a Python program to find a string which, when each character is shifted (ASCII incremented) by shift, gives the result. 
+Input:
+Ascii character table
+Shift = 1
+Output:
+@rbhhbg`q`bsdqs`akd
+Input:
+Ascii character table
+Shift = -1
+Output:
+Btdjj!dibsbdufs!ubcmf
+Click me to see the sample solution
+
+Solution
+
+
+def test(strs,shift):
+    return "".join(chr(ord(c) - shift) for c in strs)
+ 
+strs = "Ascii character table"
+print("Original string:")
+print(strs)
+shift = 1
+print('Shift =',shift)
+print("A new string which, when each character is shifted (ASCII incremented) by shift in the said string:")
+print(test(strs, shift))
+strs = "Ascii character table"
+print("\nOriginal string:")
+print(strs)
+shift = -1
+print('Shift =',shift)
+print("A new string which, when each character is shifted (ASCII incremented) by shift in the said string:")
+print(test(strs, shift))
+
+#----------#
+68. Write a Python program to find all 5's in integers less than n that are divisible by 9 or 15. 
+Input:
+Value of n = 50
+Output:
+[[15, 1], [45, 1]]
+Input:
+Value of n = 65
+Output:
+[[15, 1], [45, 1], [54, 0]]
+Input:
+Value of n = 75
+Output:
+[[15, 1], [45, 1], [54, 0]]
+Input:
+Value of n = 85
+Output:
+[[15, 1], [45, 1], [54, 0], [75, 1]]
+Input:
+Value of n = 150
+Output:
+[[15, 1], [45, 1], [54, 0], [75, 1], [105, 2], [135, 2]]
+Click me to see the sample solution
+
+Solution
+def test(n):
+    return [[i,j] for i in range(n) for j in range(len(str(i))) if str(i)[j] == '5' and (i%15==0 or i%9==0)]
+n = 50
+print("Value of n = ",n)
+print("5's in integers less than",n,"that are divisible by 9 or 15:")
+print(test(n))
+n = 65
+print("\nValue of n = ",n)
+print("5's in integers less than",n,"that are divisible by 9 or 15:")
+print(test(n))
+n = 75
+print("\nValue of n = ",n)
+print("5's in integers less than",n,"that are divisible by 9 or 15:")
+print(test(n))
+n = 85
+print("\nValue of n = ",n)
+print("5's in integers less than",n,"that are divisible by 9 or 15:")
+print(test(n))
+n = 150
+print("\nValue of n = ",n)
+print("5's in integers less than",n,"that are divisible by 9 or 15:")
+print(test(n))
+
+#----------#
+69. Write a Python program to create a new string by taking a string, and word by word rearranging its characters in ASCII order. 
+Input: Ascii character table
+Output:
+Aciis aaccehrrt abelt
+Input: maltos won
+Output:
+almost now
+Click me to see the sample solution
+
+Solution
+
+
+def test(strs):
+    return " ".join("".join(sorted(w)) for w in strs.split(' '))
+ 
+strs = "Ascii character table"
+print("Original string:",strs) 
+print("New string by said string, and word by word rearranging its characters in ASCII order:")
+print(test(strs))
+strs = "maltos won"
+print("\nOriginal string:",strs) 
+print("New string by said string, and word by word rearranging its characters in ASCII order:")
+print(test(strs)) 
+
+#----------#
+70. Write a Python program to find the first negative balance from a given a list of numbers which represent bank deposits and withdrawals. 
+Input:
+[[12, -7, 3, -89, 14, 88, -78], [-1, 2, 7]]
+Output:
+[-81, -1]
+Input:
+[[1200, 100, -900], [100, 100, -2400]]
+Output:
+[None, -2200]
+Click me to see the sample solution
+
+Solution
+
+def test(balances):
+    firsts = []
+    for bals in balances:
+        total = 0
+        for b in bals:
+            total += b
+            if total < 0:
+                firsts.append(total)
+                break
+        else:
+            firsts.append(None)
+    return firsts 
+balances = [[12, -7, 3, -89, 14, 88, -78], [-1, 2, 7]]
+print("Bank deposits and withdrawals:")
+print(balances)
+print("\nFirst negative balance of deposits and withdrawals:")
+print(test(balances))
+balances = [[1200, 100, -900], [100, 100, -2400]]
+print("Bank deposits and withdrawals:")
+print(balances)
+print("\nFirst negative balance of deposits and withdrawals:")
+print(test(balances))
+
+#----------#
+71. Given a list of numbers and a number to inject, write a Python program to create a list containing that number in between each pair of adjacent numbers. 
+Input: [12, -7, 3, -89, 14, 88, -78, -1, 2, 7]
+Separator: 6
+Output:
+[12, 6, -7, 6, 3, 6, -89, 6, 14, 6, 88, 6, -78, 6, -1, 6, 2, 6, 7]
+Input: [1, 2, 3, 4, 5, 6]
+Separator: 9
+Output:
+[1, 9, 2, 9, 3, 9, 4, 9, 5, 9, 6]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums, sep):
+    ans = [sep] * (2 * len(nums) - 1)
+    ans[::2] = nums
+    return ans 
+nums = [12, -7, 3, -89, 14, 88, -78, -1, 2, 7]
+separator = 6
+print("List of numbers:",nums)
+print("Separator:",separator)
+print("Inject the separator in between each pair of adjacent numbers of the said list:")
+print(test(nums,separator))
+nums = [1, 2, 3, 4, 5, 6]
+separator = 9
+print("\nList of numbers:",nums)
+print("Separator:",separator)
+print("Inject the separator in between each pair of adjacent numbers of the said list:")
+print(test(nums,separator)) 
+
+#----------#
+72. Write a Python program to find the indices of three numbers that sum to 0 in a given list of numbers. 
+Input: [12, -7, 3, -89, 14, 4, -78, -1, 2, 7]
+Output:
+[1, 2, 5]
+Input: [1, 2, 3, 4, 5, 6, -7]
+Output:
+[2, 3, 6]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    inv = {n: i for i, n in enumerate(nums)}  # note that later duplicates will override earlier entries
+    for i, n in enumerate(nums):
+        if inv[n] == i:
+            del inv[n]
+        if any((-m - n) in inv for m in nums[:i]):  # found solution!
+            j, m = next((j, m) for j, m in enumerate(nums) if (-m - n) in inv)
+            k = inv[-m - n]
+            return sorted([i, j, k])
+ 
+nums = [12, -7, 3, -89, 14, 4, -78, -1, 2, 7]
+ 
+print("List of numbers:",nums)
+print("Indices of three numbers that sum to 0 in the said list:")
+print(test(nums))
+nums = [1, 2, 3, 4, 5, 6, -7]
+print("\nList of numbers:",nums)
+print("Indices of three numbers that sum to 0 in the said list:")
+print(test(nums))
+
+#----------#
+73. Write a Python program to find a substring in a given string contains a vowel between two consonants. 
+Input: Hello
+Output:
+Hel
+Input: Sandwhich
+Output:
+San
+Input: Python
+Output:
+hon
+Click me to see the sample solution
+
+Solution
+
+
+def test(s):
+    cons = "bcdfghjklmnpqrstvwxz"
+    vows = "aeiou"
+    return next(s[i - 1:i + 2] for i in range(1, len(s) - 1)
+                if s[i].lower() in vows and s[i - 1].lower() in cons and s[i + 1].lower() in cons)
+strs = "Hello"
+print("Original string:",strs) 
+print("Find a vowel between two consonants, contained in said string:")
+print(test(strs))
+strs = "Sandwhich"
+print("\nOriginal string:",strs) 
+print("Find a vowel between two consonants, contained in said string:")
+print(test(strs))
+strs = "Python"
+print("\nOriginal string:",strs) 
+print("Find a vowel between two consonants, contained in said string:")
+print(test(strs)) 
+
+#----------#
+74. Write a Python program to find a string consisting of space-separated characters with given counts. 
+Input: {'f': 1, 'o': 2}
+Output:
+f o o
+Input: {'a': 1, 'b': 1, 'c': 1}
+Output:
+a b c
+Click me to see the sample solution
+
+Solution
+
+
+def test(counts):
+     return " ".join(c for c, i in counts.items() for _ in range(i))
+strs = {"f": 1, "o": 2}
+print("Original string:",strs) 
+print("String consisting of space-separated characters with given counts:")
+print(test(strs))
+strs = {"a": 1, "b": 1, "c":1}
+print("\nOriginal string:",strs) 
+print("String consisting of space-separated characters with given counts:")
+print(test(strs)) 
+
+#----------#
+75. Write a Python program to reorder numbers from a give array in increasing/decreasing order based on whether the first plus last element is odd/even. 
+Reorder numbers of a give array in increasing/decreasing order based on whether the first plus last element is odd/even.:
+Input:
+[3, 7, 4]
+Output:
+[3, 4, 7]
+Input: 
+[2, 7, 4]
+Output:
+[7, 4, 2]
+Input: 
+[1, 5, 6, 7, 4, 2, 8] 
+Output:
+[1, 2, 4, 5, 6, 7, 8]
+Input: 
+[1, 5, 6, 7, 4, 2, 9]
+Output:
+[9, 7, 6, 5, 4, 2, 1]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+     return sorted(nums, reverse=(False if (nums[0] + nums[-1]) % 2 else True)) 
+print("Reorder numbers of a give array in increasing/decreasing order based on whether the first plus last element is odd/even.:") 
+nums = [3, 7, 4]
+print("\nList of numbers:",nums)
+print("Result:")
+print(test(nums))
+nums = [2, 7, 4]
+print("\nList of numbers:",nums)
+print("Result:")
+print(test(nums))
+nums = [1, 5, 6, 7, 4, 2, 8]
+print("\nList of numbers:",nums)
+print("Result:")
+print(test(nums))
+nums = [1, 5, 6, 7, 4, 2, 9]
+print("\nList of numbers:",nums)
+print("Result:")
+print(test(nums))
+
+#----------#
+76. Write a Python program to find the index of the largest prime in the list and the sum of its digits. 
+Input: [3, 7, 4] 
+Output:
+[1, 7]
+Input: [3, 11, 7, 17, 19, 4] 
+Output:
+[4, 10]
+Input: [23, 17, 201, 14, 10473, 43225, 421, 423, 11, 10, 2022, 342157]
+Output:
+[6, 7]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    n, i = max((n, i) for i, n in enumerate(nums) if is_prime(n))
+    return [i, sum(int(c) for c in str(n))]
+def is_prime(n):
+    return n > 1 and all(n % j for j in range(2, int(n ** 0.5) + 1))
+    
+nums = [3, 7, 4]
+print("List of numbers:",nums)
+print("Index of the largest prime in the said list and the sum of its digits:")
+print(test(nums))
+nums = [3, 11, 7, 17, 19, 4]
+print("\nList of numbers:",nums)
+print("Index of the largest prime in the said list and the sum of its digits:")
+print(test(nums))
+nums = [23, 17, 201, 14, 10473, 43225, 421, 423, 11, 10, 2022, 342157]
+print("\nList of numbers:",nums)
+print("Index of the largest prime in the said list and the sum of its digits:")
+print(test(nums))
+
+#----------#
+77. Write a Python program to convert GPAs to letter grades according to the following table: 
+
+
+Solution
+
+
+def test(nums):
+    return ["A+" if grade >= 4.0
+            else ("A" if grade >= 3.7
+                  else ("A-" if grade >= 3.4
+                        else ("B+" if grade >= 3.0
+                              else ("B" if grade >= 2.7
+                                    else ("B-" if grade >= 2.4
+                                          else ("C+" if grade >= 2.0
+                                                else ("C" if grade >= 1.7
+                                                      else ("C-" if grade >= 1.4
+                                                            else "F"))))))))
+            for grade in nums]
+
+   
+nums = [4.0, 3.5, 3.8]
+print("List of numbers:",nums)
+print("Convert GPAs to letter grades:")
+print(test(nums))
+nums = [5.0, 4.7, 3.4, 3.0, 2.7, 2.4, 2.0, 1.7, 1.4, 0.0]
+print("\nList of numbers:",nums)
+print("Convert GPAs to letter grades:")
+print(test(nums))
+
+#----------#
+78. Write a Python program to find the two closest distinct numbers in a given a list of numbers. 
+Input: 
+[1.3, 5.24, 0.89, 21.0, 5.27, 1.3]
+Output:
+[5.24, 5.27]
+Input: 
+[12.02, 20.3, 15.0, 19.0, 11.0, 14.99, 17.0, 17.0, 14.4, 16.8]
+Output:
+[14.99, 15.0]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    s = sorted(set(nums))
+    return min([[a, b] for a, b in zip(s, s[1:])], key=lambda x: x[1] - x[0])
+   
+nums = [1.3, 5.24, 0.89, 21.0, 5.27, 1.3]
+print("List of numbers:",nums)
+print("Two closest distinct numbers in the said list of numbers:")
+print(test(nums))
+nums = [12.02, 20.3, 15.0, 19.0, 11.0, 14.99, 17.0, 17.0, 14.4, 16.8] 
+print("\nList of numbers:",nums)
+print("Two closest distinct numbers in the said list of numbers:")
+print(test(nums))
+
+#----------#
+79. Write a Python program to find the largest negative and smallest positive numbers (or 0 if none). 
+Input: 
+[-12, -6, 300, -40, 2, 2, 3, 57, -50, -22, 12, 40, 9, 11, 18]
+Output:
+[-6, 2]
+Input: 
+[-1, -2, -3, -4]
+Output:
+[-1, 0]
+Input: 
+[1, 2, 3, 4]
+Output:
+[0, 1]
+Input:
+[]
+Output:
+[0, 0]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    pos = [n for n in nums if n > 0]
+    neg = [n for n in nums if n < 0]
+    return [max(neg) if neg else 0, min(pos) if pos else 0]   
+nums=[-12, -6, 300, -40, 2, 2, 3, 57, -50, -22, 12, 40, 9, 11, 18]
+print("List of numbers:",nums)
+print("Largest negative and smallest positive numbers (or 0 if none) of the said list:")
+print(test(nums))
+nums=[-1, -2, -3, -4]
+print("\nList of numbers:",nums)
+print("Largest negative and smallest positive numbers (or 0 if none) of the said list:")
+print(test(nums))
+nums=[1, 2, 3, 4]
+print("\nList of numbers:",nums)
+print("Largest negative and smallest positive numbers (or 0 if none) of the said list:")
+print(test(nums))
+nums=[]
+print("\nList of numbers:",nums)
+print("Largest negative and smallest positive numbers (or 0 if none) of the said list:")
+print(test(nums)) 
+
+#----------#
+80. Write a Python program to round each float in a given list of number up to the next integer and return the running total of the integer squares. 
+Input: [2.6, 3.5, 6.7, 2.3, 5.6]
+Output:
+[9, 25, 74, 83, 119]
+Input: [301.1, 401.4, -23.1, 13554122.0, 10201.0101, 10000000.0]
+Output:
+[91204, 252808, 253337, 183714223444221, 183714327525025, 283714327525025]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    from math import ceil
+    running_squares = []
+    tot = 0
+    for v in nums:
+        tot += ceil(v) ** 2
+        running_squares.append(tot)
+    return running_squares
+   
+nums = [2.6, 3.5, 6.7, 2.3, 5.6]
+print("List of numbers:",nums)
+print("Round each float of the said list up to the next integer and return the running total of the integer squares:")
+print(test(nums))
+nums = [301.1, 401.4, -23.1, 13554122.0, 10201.0101, 10000000.0]
+print("\nList of numbers:",nums)
+print("Round each float of the said list up to the next integer and return the running total of the integer squares:")
+print(test(nums))
+
+#----------#
+81. Write a Python program to calculate the average of the numbers a through b ( b not included ) rounded to nearest integer, in binary (or -1 if there are no such numbers). 
+Input: 
+4 , 7
+Output:
+0b101
+Input:
+11 , 19
+Output:
+0b1110
+Click me to see the sample solution
+
+Solution
+
+
+def test(a,b):
+    r = range(a, b)
+    if len(r) == 0:
+        return "-1"
+    return bin(round(sum(r) / len(r)))
+   
+a = 4
+b = 7
+print("Range:",a,",",b)
+print("Average of the numbers",a,"through",b,"rounded to nearest integer, in binary:")
+print(test(a, b))
+a = 11
+b = 19
+print("\nRange:",a,",",b)
+print("Average of the numbers",a,"through",b,"rounded to nearest integer, in binary:")
+print(test(a, b))
+
+#----------#
+82. Write a Python program to find the sublist of numbers from a given list of numbers with only odd digits in increasing order. 
+Input:
+[1, 3, 79, 10, 4, 2, 39]
+Output:
+[1, 3, 39, 79]
+Input:
+[11, 31, 40, 68, 77, 93, 48, 1, 57]
+Output:
+[1, 11, 31, 57, 77, 93]
+Input:
+[9, -2, 3, 4, -2, 0, 2, -3, 8, -1]
+Output:
+[-3, -1, 3, 9]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    return sorted(n for n in nums if all(int(c) % 2 for c in str(abs(n))))
+  
+nums = [1, 3, 79, 10, 4, 2, 39]
+print("Original list of numbers:")
+print(nums)
+print("Sublist of numbers of the said list with only odd digits in increasing order:")
+print(test(nums))
+nums = [11, 31, 40, 68, 77, 93, 48, 1, 57]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Sublist of numbers of the said list with only odd digits in increasing order:")
+print(test(nums))
+nums = [9, -2, 3, 4, -2, 0, 2, -3, 8, -1]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Sublist of numbers of the said list with only odd digits in increasing order:")
+print(test(nums))
+
+#----------#
+83. A string is happy if every three consecutive characters are distinct. Write a Python program to find two indices making a given string unhappy. 
+Input: 
+Python
+Output:
+None
+Input: 
+Unhappy
+Output:
+[4, 5]
+Input: 
+Find
+Output:
+None
+Input:
+Street
+Output:
+[3, 4]
+Click me to see the sample solution
+
+Solution
+
+
+def test(s):
+    for i in range(len(s) - 2):
+        if s[i] == s[i + 1]:
+            return [i, i + 1]
+        if s[i] == s[i + 2]:
+            return [i, i + 2] 
+
+strs = "Python"
+print("Original string:",strs) 
+print("Find two indices making the said string unhappy!")
+print(test(strs))
+strs = "Unhappy"
+print("\nOriginal string:",strs) 
+print("Find two indices making the said string unhappy!")
+print(test(strs)) 
+strs = "Find"
+print("\nOriginal string:",strs) 
+print("Find two indices making the said string unhappy!")
+print(test(strs))
+strs = "Street"
+print("\nOriginal string:",strs) 
+print("Find two indices making the said string unhappy!")
+print(test(strs))
+
+#----------#
+84. Write a Python program to find the index of the matching parentheses for each character in a given string. 
+Input: ()(())
+Output:
+[1, 0, 5, 4, 3, 2]
+Input: ()()()
+Output:
+[1, 0, 3, 2, 5, 4]
+Input: ((()))
+Output:
+[5, 4, 3, 2, 1, 0]
+Click me to see the sample solution
+
+Solution
+
+
+def test(parens):
+    a = list(parens)
+    stack = []
+    for i, c in enumerate(a):
+        if c == "(":
+            stack.append(i)
+        else:
+            a[stack[-1]] = i
+            a[i] = stack.pop()
+    return a 
+
+parens = "()(())"
+print("Original parentheses:",parens) 
+print("Index of the matching parentheses for each character in a given string:")
+print(test(parens))
+parens = "()()()"
+print("\nOriginal parentheses:",parens) 
+print("Index of the matching parentheses for each character in a given string:")
+print(test(parens))
+parens = "((()))"
+print("\nOriginal parentheses:",parens) 
+print("Index of the matching parentheses for each character in a given string:")
+print(test(parens))
+
+#----------#
+85. Write a Python program to find an increasing sequence consisting of the elements of the original list. 
+Input: 
+[1, 3, 79, 10, 4, 2, 39]
+Output:
+[1, 2, 3, 4, 10, 39, 79]
+Input: 
+[11, 31, 40, 68, 77, 93, 48, 1, 57]
+Output:
+[1, 11, 31, 40, 48, 57, 68, 77, 93]
+Input: 
+[9, -2, 3, 4, -2, 0, 2, -3, 8, -1]
+Output:
+[-3, -2, -1, 0, 2, 3, 4, 8, 9]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    result = sorted(set(nums))
+    return result
+  
+nums = [1, 3, 79, 10, 4, 2, 39]
+print("Original list of numbers:")
+print(nums)
+print("Increasing sequence consisting of the elements of the said list:")
+print(test(nums))
+nums = [11, 31, 40, 68, 77, 93, 48, 1, 57]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Increasing sequence consisting of the elements of the said list:")
+print(test(nums))
+nums = [9, -2, 3, 4, -2, 0, 2, -3, 8, -1]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Increasing sequence consisting of the elements of the said list:")
+print(test(nums))
+
+#----------#
+86. Write a Python program to find the vowels from each of the original texts (y counts as a vowel at the end of the word) from a given list of strings. 
+Input: ['w3resource', 'Python', 'Java', 'C++']
+Output:
+['eoue', 'o', 'aa', '']
+Input: ['ably', 'abruptly', 'abecedary', 'apparently', 'acknowledgedly']
+Output:
+['ay', 'auy', 'aeeay', 'aaey', 'aoeey']
+Click me to see the sample solution
+
+Solution
+
+
+def test(strs):
+        return ["".join(c for c in text if c.lower() in "aeiou") + (text[-1] if text[-1].lower() == "y" else "")
+            for text in strs]
+ 
+ 
+strs = ["w3resource", "Python", "Java", "C++"]
+print("Original List of strings:",strs)
+print("Vowels from each of the original texts (y counts as a vowel at the end of the word:")
+print(test(strs))
+strs = ["ably", "abruptly", "abecedary", "apparently", "acknowledgedly"]
+print("\nOriginal List of strings:",strs)
+print("Positions of all uppercase vowels (not counting Y) in even indices:")
+print(test(strs))  
+
+#----------#
+87. Write a Python program to find a valid substring of a given string that contains matching brackets, at least one of which is nested. 
+Input: 
+]][][[]]] 
+Output:
+[[]]
+Input: 
+]]]]]]]]]]]]]]]]][][][][]]]]]]]]]]][[[][[][[[[[][][][]][[[[[[[[[[[[[[[[[[ 
+Output:
+[[][][][]]
+Click me to see the sample solution
+
+Solution
+
+
+def test(s):
+    import re
+    return re.search(r"\[(\[\])+\]", s).group(0)
+
+brackets = "]][][[]]]"
+print("Original List of strings:",brackets)
+print("\nFind a valid substring of the said string that contains matching brackets, at least one of which is nested:")
+print(test(brackets))
+brackets = "]]]]]]]]]]]]]]]]][][][][]]]]]]]]]]][[[][[][[[[[][][][]][[[[[[[[[[[[[[[[[["
+print("\nOriginal List of strings:",brackets)
+print("\nFind a valid substring of the said string that contains matching brackets, at least one of which is nested:")
+print(test(brackets)) 
+
+#----------#
+88. Write a Python program to find an integer (n >= 0) with the given number of even and odd digits. 
+Input: 
+Number of even digits: 2 ,Number of odd digits: 3
+Output:
+22333
+Input: 
+Number of even digits: 4 ,Number of odd digits: 7
+Output:
+22223333333
+Click me to see the sample solution
+
+Solution
+
+
+def test(a,b):    
+    return int(evens*"2"+odds*"3")   
+evens = 2
+odds = 3
+print("Number of even digits:",evens,",Number of odd digits:",odds)
+print("Integer(>= 0) with the given number of even and odd digits:")
+print(test(evens, odds)) 
+evens = 4
+odds = 7
+print("\nNumber of even digits:",evens,",Number of odd digits:",odds)
+print("Integer(>= 0) with the given number of even and odd digits:")
+print(test(evens, odds))
+
+#----------#
+89. Write a Python program to find all integers <= 1000 that are the product of exactly three primes. Each integer should represent as the list of its three prime factors. 
+Input: 10
+Output:
+[[2, 2, 2]]
+Input: 50
+Output:
+[[2, 2, 2], [2, 2, 3], [2, 2, 5], [2, 2, 7], [2, 2, 11], [2, 3, 2], [2, 3, 3], [2, 3, 5], [2, 3, 7], [2, 5, 2], [2, 5, 3], [2, 5, 5], [2, 7, 2], [2, 7, 3], [2, 11, 2], [3, 2, 2], [3, 2, 3], [3, 2, 5], [3, 2, 7], [3, 3, 2], [3, 3, 3], [3, 3, 5], [3, 5, 2], [3, 5, 3], [3, 7, 2], [5, 2, 2], [5, 2, 3], [5, 2, 5], [5, 3, 2], [5, 3, 3], [5, 5, 2], [7, 2, 2], [7, 2, 3], [7, 3, 2], [11, 2, 2]]
+Click me to see the sample solution
+
+Solution
+
+
+def test(n):    
+    ps = [p for p in range(2,n) if all(p % sat != 0 for sat in range(2, p))]
+    return [[p, q, r] for p in ps for q in ps for r in ps if p*q*r <= n]   
+n = 10
+print("Number:",n)
+print("Find all integers <= said number that are the product of exactly three primes:")
+print(test(n)) 
+n = 50
+print("\nNumber:",n)
+print("Find all integers <= said number that are the product of exactly three primes:")
+print(test(n)) 
+n = 1000
+print("\nNumber:",n)
+print("Find all integers <= said number that are the product of exactly three primes:")
+print(test(n)) 
+
+#----------#
+90. For each triple of eaten, need, stock write a Python program to get a pair of total appetite and remaining. 
+Input:
+[[2, 5, 6], [3, 9, 22]]
+Output:
+[[7, 1], [12, 13]]
+Input:
+[[2, 3, 18], [4, 9, 2], [2, 5, 7], [3, 8, 12], [4, 9, 106]]
+Output:
+[[5, 15], [6, 0], [7, 2], [11, 4], [13, 97]]
+Input:
+[[1, 2, 3], [4, 5, 6]]
+Output:
+[[3, 1], [9, 1]]
+Click me to see the sample solution
+
+Solution
+ 
+
+def test(nums):
+    return [[a+min(b, c), max(0, c-b)] for a, b, c in nums]
+
+nums = [[2, 5, 6], [3, 9, 22]]
+print("Original list (triple) of lists:")
+print(nums)
+print("Each triple of eaten, need, stock return a pair of total appetite and remaining:")
+print(test(nums))
+nums = [[2, 3, 18], [4, 9, 2], [2, 5, 7], [3, 8, 12], [4, 9, 106]]
+print("\nOriginal list (triple) of lists:")
+print(nums)
+print("Each triple of eaten, need, stock return a pair of total appetite and remaining:")
+print(test(nums)) 
+nums = [[1, 2, 3], [4, 5, 6]]
+print("\nOriginal list (triple) of lists:")
+print(nums)
+print("Each triple of eaten, need, stock return a pair of total appetite and remaining:")
+print(test(nums))
+
+#----------#
+91. Write a Python program to find all n-digit integers that start or end with 2. 
+Input: 1
+Output:
+[2]
+Input: 2
+Output:
+[12, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 32, 42, 52, 62, 72, 82, 92]
+Input: 3
+Output:
+[102, 112, 122, 132, 142, 152, 162, 172, 182, 192, 200, 201, 202, 203, 204, 205, 206, 207, 208, 209, 210, 211, 212, 213, 214, 215, 216, 217, 218, 219, 220, 221, 222, 223, 224, 225, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 236, 237, 238, 239, 240, 241, 242, 243, 244, 245, 246, 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 264, 265, 266, 267, 268, 269, 270, 271, 272, 273, 274, 275, 276, 277, 278, 279, 280, 281, 282, 283, 284, 285, 286, 287, 288, 289, 290, 291, 292, 293, 294, 295, 296, 297, 298, 299, 302, 312, 322, 332, 342, 352, 362, 372, 382, 392, 402, 412, 422, 432, 442, 452, 462, 472, 482, 492, 502, 512, 522, 532, 542, 552, 562, 572, 582, 592, 602, 612, 622, 632, 642, 652, 662, 672, 682, 692, 702, 712, 722, 732, 742, 752, 762, 772, 782, 792, 802, 812, 822, 832, 842, 852, 862, 872, 882, 892, 902, 912, 922, 932, 942, 952, 962, 972, 982, 992]
+Click me to see the sample solution
+
+Solution
+def test(n):
+    ans = []
+    for i in range(10 ** (n - 1), 10 ** n):
+        assert len(str(i)) == n
+        if str(i).startswith("2") or str(i).endswith("2"):
+            ans.append(i)
+    return ans   
+n = 1
+print("Number:",n)
+print("All",n,"- digit integers that start or end with 2:")
+print(test(n))
+n = 2
+print("\nNumber:",n)
+print("All",n,"- digit integers that start or end with 2:")
+print(test(n))
+n = 3
+print("\nNumber:",n)
+print("All",n,"- digit integers that start or end with 2:")
+print(test(n))
+
+#----------#
+92. Write a Python program to start with a list of integers, keep every other element in place and otherwise sort the list. 
+Input: 
+[2, 5, 6, 3, 1, 4, 34]
+Output:
+[1, 5, 2, 3, 6, 4, 34]
+Input: 
+[8, 0, 7, 2, 9, 4, 1, 2, 8, 3]
+Output:
+[1, 0, 7, 2, 8, 4, 8, 2, 9, 3]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    li = nums.copy()    
+    for i in range(len(li)):
+        if i % 2 == 0: 
+            for j in range(i+2, len(li), 2):
+                if li[j] < li[i]:
+                    swap(li, i, j)
+    
+    return li
+def swap(li, i, j):
+    temp = li[i]
+    li[i] = li[j]
+    li[j] = temp
+nums = [2, 5, 6, 3, 1, 4, 34]
+print("Original list (triple) of lists:")
+print(nums)
+print("In the said list, keep every other element in place and otherwise sort the list.:")
+print(test(nums))
+nums = [8, 0, 7, 2, 9, 4, 1, 2, 8, 3]
+print("\nOriginal list (triple) of lists:")
+print(nums)
+print("In the said list, keep every other element in place and otherwise sort the list.:")
+print(test(nums))
+
+#----------#
+93. Write a Python program to find the closest palindrome from a given string. 
+Input: 
+cat
+Output:
+cac
+Input: 
+madan
+Output:
+madam
+Input: 
+radivider
+Output:
+radividar
+Input: 
+madan
+Output:
+madam
+Input:
+abc
+Output:
+aba
+Input:
+racecbr
+Output:
+racecar
+Click me to see the sample solution
+
+Solution
+
+
+def test(s):
+    odd = 0
+    for i, c in enumerate(s):
+        if c != s[~i]:
+            odd += 1
+    if odd % 2 == 1:
+        half = odd // 2
+        pal = "".join((s[i] if i < half else s[~i] for i in range(len(s))))
+        return pal
+    else:
+        half = odd // 2
+        pal = "".join((s[i] if i <= half else s[~i] for i in range(len(s))))
+        return pal
+
+s = "cat"
+print("Original string:",s) 
+print("Closest palindrome of the said string:")
+print(test(s))
+s = "madan"
+print("\nOriginal string:",s) 
+print("Closest palindrome of the said string:")
+print(test(s))
+s = "radivider"
+print("Original string:",s) 
+print("Closest palindrome of the said string:")
+print(test(s))
+s = "madan"
+print("\nOriginal string:",s) 
+print("Closest palindrome of the said string:")
+print(test(s)) 
+s = "abc"
+print("Original string:",s) 
+print("Closest palindrome of the said string:")
+print(test(s))
+s = "racecbr"
+print("\nOriginal string:",s) 
+print("Closest palindrome of the said string:")
+print(test(s))  
+
+#----------#
+94. Given a string consisting of whitespace and groups of matched parentheses, write a Python program to split it into groups of perfectly matched parentheses without any whitespace. 
+Input: 
+( ()) ((()()())) (()) ()
+Output:
+['(())', '((()()()))', '(())', '()']
+Input: 
+() (( ( )() ( )) ) ( ())
+Output:
+['()', '((()()()))', '(())']
+Click me to see the sample solution
+
+Solution
+
+
+def test(combined):
+    ls = []
+    s2 = ""
+    for s in combined.replace(' ', ''):
+        s2 += s
+        if s2.count("(") == s2.count(")"):
+            ls.append(s2)
+            s2 = ""
+    return ls 
+combined = '( ()) ((()()())) (()) ()'
+print("Parentheses string:")
+print(combined)
+print("Separate parentheses groups of the said string:")
+print(test(combined))
+combined = '() (( ( )() (   )) ) ( ())'
+print("\nParentheses string:")
+print(combined)
+print("Separate parentheses groups of the said string:")
+print(test(combined))
+
+#----------#
+95. Write a Python program to find a palindrome of a given length containing a given string. 
+Input: madam , 7
+Output:
+madaadam
+Input: madam , 6
+Output:
+maddam
+Input: madam , 5
+Output:
+maaaam
+Input: madam , 3
+Output:
+maam
+Input: madam , 2
+Output:
+mm 
+Input: madam , 1
+Output:
+aa
+Click me to see the sample solution
+
+Solution
+
+
+def test(s, length):
+    s_index = 0
+    length_half = (length - (length % 2)) // 2
+    ans = ""
+    while len(ans) < length_half:
+        ans += s[s_index%len(s)]
+        s_index += 1
+    if length % 2 == 1:
+        ans += "a"
+    return ans + ans[::-1] 
+
+s = 'madam'
+length = 7
+print("String and length of the palindrome:",s,",",length)
+print("Palindrome of the said string and length:")
+print(test(s, length))
+s = 'madam'
+length = 6
+print("\nString and length of the palindrome:",s,",",length)
+print("Palindrome of the said string and length:")
+print(test(s, length))
+length = 5
+print("\nString and length of the palindrome:",s,",",length)
+print("Palindrome of the said string and length:")
+print(test(s, length))
+length = 3
+print("\nString and length of the palindrome:",s,",",length)
+print("Palindrome of the said string and length:")
+print(test(s, length))
+length = 2
+print("\nString and length of the palindrome:",s,",",length)
+print("Palindrome of the said string and length:")
+print(test(s, length))
+length = 1
+print("\nString and length of the palindrome:",s,",",length)
+print("Palindrome of the said string and length:")
+print(test(s, length))
+
+#----------#
+96. Write a Python program to get the single digits in numbers sorted backwards and converted to English words. 
+Input: 
+[1, 3, 4, 5, 11]
+Output:
+['five', 'four', 'three', 'one']
+Input: 
+[27, 3, 8, 5, 1, 31]
+Output:
+['eight', 'five', 'three', 'one']
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    digits = {"zero": None,
+              "one": 1,
+              "two": 2,
+              "three": 3,
+              "four": 4,
+              "five": 5,
+              "six": 6,
+              "seven": 7,
+              "eight": 8,
+              "nine": 9}
+    digits_backwards = {digits[k]: k for k in digits}
+    digits = [digits[s] for s in digits]
+    li = [digits[n] for n in nums if n in digits]
+    return [digits_backwards[n] for n in sorted(li, reverse=True)]
+  
+nums = [1, 3, 4, 5, 11]
+print("Original list of numbers:")
+print(nums)
+print("Return the single digits in nums sorted backwards and converted to English words:")
+print(test(nums))
+nums = [27, 3, 8, 5, 1, 31]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Return the single digits in nums sorted backwards and converted to English words:")
+print(test(nums))
+
+#----------#
+97. Write a Python program to find the following strange sort of list of numbers: the first element is the smallest, the second is the largest of the remaining, the third is the smallest of the remaining, the fourth is the smallest of the remaining, etc. 
+Input:
+[1, 3, 4, 5, 11]
+Output:
+[1, 11, 3, 5, 4]
+Input:
+[27, 3, 8, 5, 1, 31]
+Output:
+[1, 31, 3, 27, 5, 8]
+Input:
+[1, 2, 7, 3, 4, 5, 6]
+Output:
+[1, 7, 2, 6, 3, 5, 4]
+Click me to see the sample solution
+
+Solution
+
+
+def test(nums):
+    if len(nums) < 2:
+        return nums
+    result = []
+    for i in range(len(nums)//2):
+        result.append(min(nums))
+        nums.remove(min(nums))
+        result.append(max(nums))
+        nums.remove(max(nums))
+    if len(nums) > 0:
+        result.append(nums[0])
+    if len(result) < 2*len(nums):
+        result.extend(nums[len(result) // 2 + 1:len(result) // 2 + 1 + len(nums) - len(result)])
+    return result
+  
+nums = [1, 3, 4, 5, 11]
+print("Original list of numbers:")
+print(nums)
+print("Strange sort of list of said numbers:")
+print(test(nums))
+nums = [27, 3, 8, 5, 1, 31]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Strange sort of list of said numbers:")
+print(test(nums))
+nums = [1, 2, 7, 3, 4, 5, 6]
+print("\nOriginal list of numbers:")
+print(nums)
+print("Strange sort of list of said numbers:")
+print(test(nums))
+
+#----------#
+98. Given a string consisting of groups of matched nested parentheses separated by parentheses, write a Python program to compute the depth of each group. 
+Input: (()) (()) () ((()()())) 
+Output:
+[2, 2, 1, 3]
+Input: () (()) () () () ()
+Output:
+[1, 2, 1, 1, 1, 1]
+Input: (((((((()))))))) () (()) ((()()()))
+Output:
+[8, 1, 2, 3]
+Click me to see the sample solution
+
+Solution
+
+
+def test(parens):
+    return [len(s.split(')')[0]) for s in parens.split()]
+
+parentheses  = '(()) (()) () ((()()())) '
+print("Parentheses strings:",parentheses )
+print("\nDepth of groups of matched nested parentheses separated by parentheses:")
+print(test(parentheses))
+parentheses  = '() (()) () () () ()'
+print("Parentheses strings:",parentheses )
+print("\nDepth of groups of matched nested parentheses separated by parentheses:")
+print(test(parentheses))
+parentheses  = '(((((((()))))))) () (()) ((()()()))'
+print("Parentheses strings:",parentheses )
+print("\nDepth of groups of matched nested parentheses separated by parentheses:")
+print(test(parentheses))  
+
+#----------#
+99. Write a Python program to find a string such that, when three or more spaces are compacted to a '-' and one or two spaces are replaced by underscores, leads to the target. 
+Input: Python-Exercises
+Output:
+Python Exercises
+Input: Python_Exercises
+Output:
+Python Exercises
+Input: -Hello,_world!__This_is-so-easy!-
+Output:
+Hello, world! This is so easy! 
+Click me to see the sample solution
+
+Solution
+
+
+def test(strs):
+       return strs.replace("-", " " * 3).replace("_", " ")
+
+strs = "Python-Exercises"
+print("Original strings:",strs)
+print("Depth of groups of matched nested parentheses separated by parentheses:")
+print(test(strs))
+strs = "Python_Exercises"
+print("\nOriginal strings:",strs)
+print("Depth of groups of matched nested parentheses separated by parentheses:")
+print(test(strs))
+strs = "-Hello,_world!__This_is-so-easy!-"
+print("\nOriginal strings:",strs)
+print("Depth of groups of matched nested parentheses separated by parentheses:")
+print(test(strs))
+
+#----------#
+100. Write a Python program to find four positive even integers whose sum is a given integer. 
+Input:
+n = 100
+Output:
+[94, 2, 2, 2]
+Input:
+n = 1000
+Output:
+[994, 2, 2, 2]
+Input:
+n = 10000
+Output:
+[9994, 2, 2, 2]
+Input:
+n = 1234567890
+Output:
+[1234567884, 2, 2, 2]
+Click me to see the sample solution
+
+Solution
+
+
+def test(n):
+    for a in range(n, 0, -1):
+        if not a % 2 == 0:
+            continue
+        for b in range(n - a, 0, -1):
+            if not b % 2 == 0:
+                continue
+            for c in range(n - b - a, 0, -1):
+                if not c % 2 == 0:
+                    continue
+                for d in range(n - b - c - a, 0, -1):
+                    if not d % 2 == 0:
+                        continue
+                    if a + b + c + d == n:
+                        return [a, b, c, d]
+   
+n = 100
+print("Four positive even integers whose sum is",n)
+print(test(n))
+n = 1000
+print("\nFour positive even integers whose sum is",n)
+print(test(n))
+n = 10000
+print("\nFour positive even integers whose sum is",n)
+print(test(n))
+n = 1234567890
+print("\nFour positive even integers whose sum is",n)
+print(test(n))
+
+#----------#
