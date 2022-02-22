@@ -5,13 +5,41 @@ Manage parsing, filling, repositories creating and pushing.
 """
 
 import os
+from http.client import HTTPSConnection
+import sys
+from time import sleep
 
-from utils import parser
-from utils import pusher
-
+from utils import parser, pusher
 
 RAW_DATA_PATH = './fill_data/raw_data'
 PREPARED_DATA_PATH = './fill_data/prepared_data'
+
+
+def log(*values):
+	"""log values and write them to log file"""
+
+	print(*values)
+	with open('log.log', 'a') as f:
+		for v in values:
+			f.write(str(v) + '\n')
+
+
+def check_connection() -> bool:
+	"""Check internet connection
+
+	Returns:
+		bool: state of internet convection
+
+	"""
+
+	conn = HTTPSConnection('8.8.8.8', timeout=10)
+	try:
+		conn.request('HEAD', '/')
+		return True
+	except Exception:
+		return False
+	finally:
+		conn.close()
 
 
 def simple_push(count: int = None):
@@ -29,9 +57,9 @@ def simple_push(count: int = None):
 
 	# parse files from fill_data/raw_data
 	# and put prepared data to fill_data/raw_data
-	print('Parse raw data files')
+	log('Parse raw data files')
 	output = parser.parse_raw_files()
-	print('Parsing output:\n', output)
+	log('Parsing output:\n', output)
 
 	# for all successfully prepared data
 	# create repo (if it does not exist),
@@ -40,21 +68,27 @@ def simple_push(count: int = None):
 	counter = 0
 	for repo in os.listdir(PREPARED_DATA_PATH):
 		if counter == count:
-			print(f'Commits limit reached: {counter} commits pushed')
+			log(f'Commits limit reached: {counter} commits pushed')
 			break
 		try:
-			print(f'Process {repo}')
+			log(f'Process {repo}')
 			output = pusher.create_repo(repo)
-			print(f'Creating repository output:\n', output)
+			log(f'Creating repository output:\n', output)
 			output = pusher.add_file(repo)
-			print(f'Adding file output:\n', output)
+			log(f'Adding file output:\n', output)
 			output = pusher.push(repo)
-			print(f'Pushing output:\n', output)
+			log(f'Pushing output:\n', output)
 		except Exception as exc:
-			print('Error:', exc)
+			log('Error:', exc)
 		else:
 			counter += 1
 
 
 if __name__ == '__main__':
-	simple_push()
+	# wait for probably wi-fi internet connection
+	sleep(10)
+	pushes_count = int(sys.argv[1]) if len(sys.argv) > 1 else None
+	if check_connection():
+		simple_push(pushes_count)
+	else:
+		log('Pushing denied. Bad internet connection')

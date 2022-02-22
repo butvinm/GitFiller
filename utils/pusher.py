@@ -107,13 +107,13 @@ def push(repo: str, commit: str = None) -> str:
 		str: output of command
 
 	"""
-	
+
 	repo_path = (os.path.join(REPOS_FULL_PATH, repo))
 	if commit is None:
 		files_in_target = set(os.listdir(repo_path))
 		commit = sorted(files_in_target, key=_file_filter)[-1]
 		commit += ' solved'
-		
+
 	cmd_stream = os.popen(
 		f'cd {repo_path} & git fetch {repo} master & git add . & git commit -m "{commit}" & git push {repo} master')
 	output = cmd_stream.read()
