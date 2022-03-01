@@ -89,9 +89,9 @@ def add_file(repo: str):
 	if different_files:
 		file = sorted(different_files, key=_file_filter)[0]
 		shutil.copy(os.path.join(source_path, file), repo_path)
-		output = 'Successfully add {file} to {repo}'
+		output = f'Successfully add {file} to {repo}'
 	else:
-		output = 'No files in {repo}'
+		output = f'No files in {repo}'
 
 	return output
 
