@@ -78,10 +78,10 @@ def simple_push(count: int = None):
 			log(f'Adding file output:\n', output)
 			output = pusher.push(repo)
 			log(f'Pushing output:\n', output)
+			if not 'nothing' in output:
+				counter += 1
 		except Exception as exc:
 			log('Error:', exc)
-		else:
-			counter += 1
 
 
 if __name__ == '__main__':
